@@ -1,0 +1,184 @@
+/* Aurora Color Variables: */
+:root {
+
+    --aurora-primary: #307cb5;
+    --aurora-primary-alt: hsl(206, 68%, 35%);
+
+    --aurora-secondary: #4a95cf;
+    --aurora-secondary-alt: hsl(206, 68%, 60%);
+    --aurora-accent: #7cb530;
+    --aurora-accent-alt: hsl(86, 58%, 40%);
+
+    --aurora-light: #CDE2F2;
+    --aurora-dark: hsl(205, 58%, 10%);
+
+
+}
+
+
+/* BUTTONS */
+
+.btn-aurora-primary {
+
+    --bs-btn-color: #fff;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-color: #fff;
+    --bs-btn-disabled-color: #fff;
+
+    --bs-btn-bg: var(--aurora-primary);
+    --bs-btn-border-color: var(--aurora-primary);
+    --bs-btn-disabled-border-color: var(--aurora-primary);
+    --bs-btn-disabled-bg: var(--aurora-primary);
+
+    --bs-btn-hover-bg: var(--aurora-primary-alt);
+    --bs-btn-hover-border-color: var(--aurora-primary-alt);
+    --bs-btn-active-bg: var(--aurora-primary-alt);
+    --bs-btn-active-border-color: var(--aurora-primary-alt);
+
+    /* focus-shadow needs to be RGB but only the numbers. */
+    --bs-btn-focus-shadow-rgb: 48, 124, 181;
+
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.btn-aurora-secondary {
+
+    --bs-btn-color: #fff;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-color: #fff;
+    --bs-btn-disabled-color: #fff;
+
+    --bs-btn-bg: var(--aurora-secondary);
+    --bs-btn-border-color: var(--aurora-secondary);
+    --bs-btn-disabled-border-color: var(--aurora-secondary);
+    --bs-btn-disabled-bg: var(--aurora-secondary);
+
+    --bs-btn-hover-bg: var(--aurora-secondary-alt);
+    --bs-btn-hover-border-color: var(--aurora-secondary-alt);
+    --bs-btn-active-bg: var(--aurora-secondary-alt);
+    --bs-btn-active-border-color: var(--aurora-secondary-alt);
+
+    /* focus-shadow needs to be RGB but only the numbers. */
+    --bs-btn-focus-shadow-rgb: 73, 150, 207;
+
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.btn-aurora-accent {
+    --bs-btn-color: #fff;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-color: #fff;
+    --bs-btn-disabled-color: #fff;
+
+    --bs-btn-bg: var(--aurora-accent);
+    --bs-btn-border-color: var(--aurora-accent);
+    --bs-btn-disabled-border-color: var(--aurora-accent);
+    --bs-btn-disabled-bg: var(--aurora-accent);
+
+    --bs-btn-hover-bg: var(--aurora-accent-alt);
+    --bs-btn-hover-border-color: var(--aurora-accent-alt);
+    --bs-btn-active-bg: var(--aurora-accent-alt);
+    --bs-btn-active-border-color: var(--aurora-accent-alt);
+
+    /* focus-shadow needs to be RGB but only the numbers. */
+    --bs-btn-focus-shadow-rgb: 124, 181, 48;
+
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+
+/* TEXT */
+
+.text-aurora-primary {
+    color: var(--aurora-primary) !important;
+}
+
+.text-aurora-secondary {
+    color: var(--aurora-secondary) !important;
+}
+
+.text-aurora-accent {
+    color: var(--aurora-accent) !important;
+}
+
+.text-aurora-light {
+    color: var(--aurora-light) !important;
+}
+
+.text-aurora-dark {
+    color: var(--aurora-dark) !important;
+}
+
+.text-aurora-subtile {
+    color: hsla(0, 0%, 50%, 0.8)
+}
+
+
+
+
+/* TEXTA AND BACKGROUND */
+.text-bg-aurora-primary {
+    color: #fff;
+    background-color: var(--aurora-primary);
+}
+
+.text-bg-aurora-secondary {
+    color: #fff;
+    background-color: var(--aurora-secondary);
+}
+
+.text-bg-aurora-accent {
+    color: #fff;
+    background-color: var(--aurora-accent);
+}
+
+.text-bg-aurora-light {
+    color: #000;
+    background-color: var(--aurora-light);
+}
+
+.text-bg-aurora-dark {
+    color: #fff;
+    background-color: var(--aurora-dark);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* BACKGROUND COLORS: */
+
+.bg-aurora-primary {
+    background-color: var(--aurora-primary) !important
+}
+
+.bg-aurora-secondary {
+    background-color: var(--aurora-secondary) !important
+}
+
+.bg-aurora-accent {
+    background-color: var(--aurora-accent) !important
+}
+
+.bg-aurora-light {
+    background-color: var(--aurora-light) !important
+}
+
+.bg-aurora-dark {
+    background-color: var(--aurora-dark) !important
+}
