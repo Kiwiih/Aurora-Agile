@@ -18,10 +18,10 @@ export const taskSlice = createSlice({
   name: 'task',
   initialState,
   reducers: {
-    //! Behöver vi funktionerna här ? ?
-    // moveTask: () => {},
-    // addTask: () => {},
-    // removeTask: () => {},
+    moveTask: () => {},
+    addTask: () => {},
+    removeTask: () => {},
+    editTask: () => {},
   },
 });
 
