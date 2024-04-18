@@ -29,6 +29,7 @@ const Board = () => {
       <CreateNewTask />
       {columns.map((column) => (
         <Column
+          key={column.id}
           columnId={column.id}
           user={user}
         />
