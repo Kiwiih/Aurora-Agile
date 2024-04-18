@@ -1,0 +1,20 @@
+*, ::before, ::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.circle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2rem;
+    height: 2rem;
+}
+
+.assigned {
+    margin: 0.2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
