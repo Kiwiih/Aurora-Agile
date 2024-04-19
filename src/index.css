@@ -1,3 +1,11 @@
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.task-title:hover {
+  color: rgb(116, 116, 116);
+
 main {
   background-color: #cde2f2;
   display: flex;
