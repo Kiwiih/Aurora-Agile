@@ -11,7 +11,7 @@ const Header = ({setUser}) => {
         Select User
       </Dropdown.Toggle>
       <Dropdown.Menu>
-        <Dropdown.Item onClick={() => setUser('All')}>All users</Dropdown.Item>
+        <Dropdown.Item onClick={() => setUser('all')}>All users</Dropdown.Item>
         <Dropdown.Item onClick={() => setUser('Moa')}>Moa</Dropdown.Item>
         <Dropdown.Item onClick={() => setUser('Alicia')}>Alicia</Dropdown.Item>
         <Dropdown.Item onClick={() => setUser('Paulina')}>Paulina</Dropdown.Item>
