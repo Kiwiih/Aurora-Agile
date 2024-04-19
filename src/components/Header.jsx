@@ -1,7 +1,6 @@
 import { Dropdown } from 'react-bootstrap';
 
-const Header = ({setUser}) => {
-
+const Header = ({ setUser }) => {
   return (
     <header className='text-bg-aurora-dark'>
       <Dropdown>
@@ -32,11 +31,11 @@ const Header = ({setUser}) => {
       </Dropdown>
       <img
         className='auroraAgileLogo'
-        src='../src/assets/logos/LogoSmall/AuroraAgileOriginalLogoColorSmall.png'
+        src='/src/assets/logos/LogoSmall/AuroraAgileOriginalLogoColorSmall.png'
         alt='Aurora Agile Logo in blue and green colors'
       />
     </header>
   );
-}
+};
 
-export default Header
+export default Header;
