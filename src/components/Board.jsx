@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { columnSlice } from '../features/column/columnSlice';
 
 //Components
-// import Header from './Header';
+import Header from './Header';
 import Column from './Column';
 import CreateNewTask from './CreateNewTask';
 
@@ -22,10 +22,9 @@ const Board = () => {
   console.log(columns);
   return (
     <>
-      {/* <Header
-        user={user}
+      <Header
         setUser={setUser}
-      /> */}
+      /> 
       <main>
         <div className='createNewTask_section'>
           <CreateNewTask />

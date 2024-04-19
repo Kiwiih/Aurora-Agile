@@ -25,3 +25,21 @@ main {
   flex-grow: 1;
   justify-content: space-around;
 }
+
+header{
+    width: 100%;
+    height: 15vh;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.auroraAgileLogo{
+    height: 70%;
+    margin: 1rem 2rem;
+}
+
+#dropdown-basic{
+    margin: 1rem 2rem;
+}
