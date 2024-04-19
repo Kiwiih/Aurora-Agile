@@ -31,7 +31,7 @@ const Header = ({ setUser }) => {
       </Dropdown>
       <img
         className='auroraAgileLogo'
-        src='./src/assets/logos/LogoSmall/AuroraAgileOriginalLogoColorSmall.png'
+        src='../src/assets/logos/LogoSmall/AuroraAgileOriginalLogoColorSmall.png'
         alt='Aurora Agile Logo in blue and green colors'
       />
     </header>
