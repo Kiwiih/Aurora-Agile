@@ -3,8 +3,8 @@ import { Dropdown } from 'react-bootstrap';
 const Header = ({setUser}) => {
 
   return (
-    <header className='text-bg-aurora-light'>
-      <Dropdown >
+    <header className='text-bg-aurora-dark'>
+      <Dropdown>
         <Dropdown.Toggle
           className='btn btn-aurora-primary'
           variant='secondary'
@@ -31,6 +31,7 @@ const Header = ({setUser}) => {
         </Dropdown.Menu>
       </Dropdown>
       <img
+        className='auroraAgileLogo'
         src='../src/assets/logos/LogoSmall/AuroraAgileOriginalLogoColorSmall.png'
         alt='Aurora Agile Logo in blue and green colors'
       />

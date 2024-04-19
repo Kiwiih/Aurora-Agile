@@ -24,15 +24,21 @@ const Board = () => {
     <>
       <Header
         setUser={setUser}
-      />
-      <CreateNewTask />
-      {columns.map((column) => (
-        <Column
-          key={column.id}
-          columnId={column.id}
-          user={user}
-        />
-      ))}
+      /> 
+      <main>
+        <div className='createNewTask_section'>
+          <CreateNewTask />
+        </div>
+        <div className='column_section'>
+          {columns.map((column) => (
+            <Column
+              key={column.id}
+              columnId={column.id}
+              user={user}
+            />
+          ))}
+        </div>
+      </main>
     </>
   );
 };
