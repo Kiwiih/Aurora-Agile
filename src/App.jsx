@@ -105,6 +105,13 @@ function App() {
         <br /> <br />
         <br />
       </div>
+import Board from './components/Board';
+
+function App() {
+  return (
+    <>
+      {' '}
+      <Board />{' '}
     </>
   );
 }
