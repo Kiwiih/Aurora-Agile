@@ -1,0 +1,19 @@
+main {
+  background-color: #cde2f2;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+.createNewTask_section {
+  padding: 1em;
+  height: 5vh;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 1em;
+}
+.column_section {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: space-around;
+}
