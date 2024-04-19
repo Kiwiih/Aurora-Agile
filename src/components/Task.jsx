@@ -4,10 +4,7 @@ import React from 'react';
 
 const Task = ({ title, description, doDate, assignedTo, deadline }) => {
   return (
-    <div
-      className='card p-2  bg-gradient  shadow-sm  my-1'
-
-    >
+    <div className='card p-2  bg-gradient  shadow-sm  my-1'>
       <div className='d-flex justify-content-between'>
         <h3 className='h6 text-truncate'>{title}</h3>
 
@@ -35,4 +32,3 @@ const Task = ({ title, description, doDate, assignedTo, deadline }) => {
 };
 
 export default Task;
-

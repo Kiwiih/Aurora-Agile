@@ -23,11 +23,7 @@ const Board = () => {
   return (
     <>
       <div className='bodyContainer'>
-
-
-        <Header
-          setUser={setUser}
-        />
+        <Header setUser={setUser} />
         <main>
           <div className='createNewTask_section'>
             <CreateNewTask />
@@ -42,13 +38,9 @@ const Board = () => {
             ))}
           </div>
         </main>
-
       </div>
     </>
   );
 };
 
 export default Board;
-
-
-
