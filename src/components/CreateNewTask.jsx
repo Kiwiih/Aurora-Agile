@@ -1,19 +1,18 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTask } from '../features/task/taskSlice';
-import { createActionCreatorInvariantMiddleware } from '@reduxjs/toolkit';
+import taskSlice from '../features/task/taskSlice';
 
 const CreateNewTask = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [deadline, setDeadline] = useState('');
+  const [deadline, setDeadline] = useState(null);
   const [showForm, setShowForm] = useState(false);
 
   const dispatch = useDispatch();
 
-  const tasks = useSelector((state) => state[tasksSlice.name].tasks);
-  console.log(tasks);
+  // const tasks = useSelector((state) => state[taskSlice.name].tasks);
+  // console.log(tasks);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,15 +22,14 @@ const CreateNewTask = () => {
         title,
         description,
         deadline,
+        columnId: 1,
       })
     );
     //Reset inputfields after submitting form
     setTitle('');
     setDescription('');
-    setDeadline('');
+    setDeadline(null);
   };
-
-  // console.log(tasks);
 
   return (
     <div>
