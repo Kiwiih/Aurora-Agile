@@ -19,12 +19,17 @@ export const taskSlice = createSlice({
   initialState,
   reducers: {
     moveTask: () => {},
-    addTask: () => {},
+    addTask: (state, action) => {
+      const newTask = {
+        id: nanoid(),
+        ...action.payload,
+      };
+    },
     removeTask: () => {},
     editTask: () => {},
   },
 });
 
-export const {} = taskSlice.actions;
+export const { moveTask, addTask, removeTask, editTask } = taskSlice.actions;
 
 export default taskSlice.reducer;

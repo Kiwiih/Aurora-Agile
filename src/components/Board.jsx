@@ -20,6 +20,7 @@ const Board = () => {
 
   const columns = useSelector((state) => state[columnSlice.name].columns);
   console.log(columns);
+
   return (
     <>
       {/* <Header
