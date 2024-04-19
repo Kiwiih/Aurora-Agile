@@ -1,0 +1,7 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.task-title:hover {
+  color: rgb(116, 116, 116);
+}

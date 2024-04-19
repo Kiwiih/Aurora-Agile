@@ -1,9 +1,12 @@
-import Modal from 'react-bootstrap/Modal';
 import { useState, useRef } from 'react';
 import Button from 'react-bootstrap/Button';
 import Overlay from 'react-bootstrap/Overlay';
 import Popover from 'react-bootstrap/Popover';
-
+// Bootstrap Stuff
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// Components
+import Modal from './components/Modal';
 function App() {
   /************************************** */
 
@@ -13,9 +16,9 @@ function App() {
   /************************************** */
 
   // Modal variables from Bootstrap:
-  const [showModal, setShowModal] = useState(false);
-  const handleCloseModal = () => setShowModal(false);
-  const handleShowModal = () => setShowModal(true);
+  // const [showModal, setShowModal] = useState(false);
+  // const handleCloseModal = () => setShowModal(false);
+  // const handleShowModal = () => setShowModal(true);
 
   // pop Over functionality from Bootstrap
   const [showPop, setShowPop] = useState(false);
@@ -92,43 +95,8 @@ function App() {
             </Overlay>
           </div>
         </>
-        {/* modal: */}
         <>
-          <button
-            className='btn btn-aurora-primary'
-            onClick={handleShowModal}
-          >
-            Vill du se en modal?
-          </button>
-
-          <Modal
-            show={showModal}
-            onHide={handleCloseModal}
-            backdrop='static'
-            keyboard={false}
-          >
-            <Modal.Header
-              className='bg-aurora-light'
-              closeButton
-            >
-              <div>
-                <Modal.Title>Modal title</Modal.Title>
-              </div>
-            </Modal.Header>
-            <Modal.Body>
-              I will not close if you click outside me. Do not even try to press
-              escape key.
-            </Modal.Body>
-            <Modal.Footer>
-              <button
-                className='btn btn-aurora-secondary'
-                onClick={handleCloseModal}
-              >
-                Stäng
-              </button>
-              <button className='btn btn-aurora-primary'>Understood</button>
-            </Modal.Footer>
-          </Modal>
+          <Modal />
         </>
         <br />
         <br /> <br />
