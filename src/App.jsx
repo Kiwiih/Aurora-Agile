@@ -1,11 +1,9 @@
-
-import AssignedUsers from './components/AssignedUsers';
+import Board from './components/Board';
 
 function App() {
-
   return (
     <>
-    <AssignedUsers />
+      <Board />
     </>
   );
 }

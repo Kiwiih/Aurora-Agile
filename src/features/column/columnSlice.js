@@ -4,8 +4,16 @@ const initialState = {
   columns: [
     {
       id: 1,
-      title: '',
+      title: 'Todo',
       // workspaces: [{}], //* Olika vyer
+    },
+    {
+      id: 2,
+      title: 'Doing',
+    },
+    {
+      id: 3,
+      title: 'Done',
     },
   ],
 };
