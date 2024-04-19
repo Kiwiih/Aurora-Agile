@@ -22,25 +22,33 @@ const Board = () => {
   console.log(columns);
   return (
     <>
-      <Header
-        setUser={setUser}
-      /> 
-      <main>
-        <div className='createNewTask_section'>
-          <CreateNewTask />
-        </div>
-        <div className='column_section'>
-          {columns.map((column) => (
-            <Column
-              key={column.id}
-              columnId={column.id}
-              user={user}
-            />
-          ))}
-        </div>
-      </main>
+      <div className='bodyContainer'>
+
+
+        <Header
+          setUser={setUser}
+        />
+        <main>
+          <div className='createNewTask_section'>
+            <CreateNewTask />
+          </div>
+          <div className='column_section'>
+            {columns.map((column) => (
+              <Column
+                key={column.id}
+                columnId={column.id}
+                user={user}
+              />
+            ))}
+          </div>
+        </main>
+
+      </div>
     </>
   );
 };
 
 export default Board;
+
+
+

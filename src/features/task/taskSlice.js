@@ -52,6 +52,7 @@ const initialState = {
       deadline: '2024-05-18',
       doDate: '2024-04-30',
       assignedTo: [6, 5],
+      columnId: 1,
     },
   ],
 };
@@ -66,8 +67,8 @@ export const taskSlice = createSlice({
         title: action.payload,
       };
     },
-    removeTask: (state, action) => {},
-    moveTask: (state, action) => {},
+    removeTask: (state, action) => { },
+    moveTask: (state, action) => { },
     editTask: (state, action) => {
       const { taskId, assignedTo } = action.payload;
       const taskToUpdate = state.tasks.find(task => task.id === taskId);
