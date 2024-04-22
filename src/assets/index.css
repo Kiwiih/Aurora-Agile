@@ -1,0 +1,79 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.bodyContainer {
+  height: 100vh;
+  background-color: rgb(30, 112, 23);
+  display: flex;
+  flex-direction: column;
+}
+
+.circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2rem;
+  height: 2rem;
+  margin: -0.3%;
+}
+
+.assigned {
+  margin: 0.5rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.task-title:hover {
+  color: rgb(116, 116, 116);
+}
+
+main {
+  background-color: #cde2f2;
+  display: flex;
+  flex-direction: column;
+  /* height: 100%; */
+  flex-grow: 1;
+}
+
+.createNewTask_section {
+  padding: 1em;
+  height: 5vh;
+  justify-content: center;
+  margin: auto;
+  margin-bottom: 1em;
+}
+
+.column_section {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 1;
+  justify-content: space-around;
+}
+
+header {
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auroraAgileLogo {
+  height: 70%;
+  margin: 1rem 2rem;
+}
+
+#dropdown-basic {
+  margin: 1rem 2rem;
+}
