@@ -12,7 +12,7 @@ const column = ({ columnId, user }) => {
   const title = currentColumn.title;
 
   const tasks = useSelector((state) => state.task.tasks);
-  console.log(tasks);
+  // console.log(tasks);
 
   return (
     <>
@@ -34,22 +34,39 @@ const column = ({ columnId, user }) => {
         </div>
 
         <div className='card border-0 container py-2 flex-grow-1  shadow-sm'>
-          {tasks.map((t) => {
-            console.log(t.columnId);
-            console.log(currentColumn);
-
-            if (t.columnId == currentColumn.id) {
-              return (
-                <Task
-                  key={t.id}
-                  title={t.title}
-                  doDate={t.doDate}
-                  assignedTo={t.assignedTo}
-                  deadline={t.deadline}
-                />
-              );
-            }
-          })}
+          {/* if user is unset then map all of the tasks */}
+          {user == null
+            ? tasks.map((t) => {
+                /* WE R MAPPING THE TASK ONLY BELONGING TO THIS CURRNT COLUMN. */
+                if (t.columnId == currentColumn.id) {
+                  return (
+                    <Task
+                      key={t.id}
+                      title={t.title}
+                      doDate={t.doDate}
+                      assignedTo={t.assignedTo}
+                      deadline={t.deadline}
+                    />
+                  );
+                }
+              })
+            : // else user want to filter by person we search trough the tasks and show them only if the user is assigned to the task
+              tasks.map((t) => {
+                if (t.assignedTo.includes(user)) {
+                  /* WE R MAPPING THE TASK ONLY BELONGING TO THIS CURRNT COLUMN. */
+                  if (t.columnId == currentColumn.id) {
+                    return (
+                      <Task
+                        key={t.id}
+                        title={t.title}
+                        doDate={t.doDate}
+                        assignedTo={t.assignedTo}
+                        deadline={t.deadline}
+                      />
+                    );
+                  }
+                }
+              })}
         </div>
       </div>
     </>
@@ -57,9 +74,3 @@ const column = ({ columnId, user }) => {
 };
 
 export default column;
-
-// props som skickas till mig
-// den kolumn den är
-//  columnID = coumnID
-// Den användare som ska väljas
-//  user = [all]
