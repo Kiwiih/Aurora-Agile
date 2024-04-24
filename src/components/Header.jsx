@@ -1,4 +1,5 @@
 import { Dropdown } from 'react-bootstrap';
+import auroraAgileLogo from '../assets/logos/LogoSmall/AuroraAgileOriginalLogoColorSmall.png';
 
 const Header = ({ setUser }) => {
   return (
@@ -12,26 +13,18 @@ const Header = ({ setUser }) => {
           Select User
         </Dropdown.Toggle>
         <Dropdown.Menu className='btn btn-aurora-secondary'>
-          <Dropdown.Item onClick={() => setUser('all')}>
-            All users
-          </Dropdown.Item>
-          <Dropdown.Item onClick={() => setUser('Moa')}>Moa</Dropdown.Item>
-          <Dropdown.Item onClick={() => setUser('Alicia')}>
-            Alicia
-          </Dropdown.Item>
-          <Dropdown.Item onClick={() => setUser('Paulina')}>
-            Paulina
-          </Dropdown.Item>
-          <Dropdown.Item onClick={() => setUser('Viktor')}>
-            Viktor
-          </Dropdown.Item>
-          <Dropdown.Item onClick={() => setUser('Jerry')}>Jerry</Dropdown.Item>
-          <Dropdown.Item onClick={() => setUser('Emil')}>Emil</Dropdown.Item>
+          <Dropdown.Item onClick={() => setUser(null)}>All users</Dropdown.Item>
+          <Dropdown.Item onClick={() => setUser(1)}>Moa</Dropdown.Item>
+          <Dropdown.Item onClick={() => setUser(2)}>Alicia</Dropdown.Item>
+          <Dropdown.Item onClick={() => setUser(3)}>Paulina</Dropdown.Item>
+          <Dropdown.Item onClick={() => setUser(4)}>Viktor</Dropdown.Item>
+          <Dropdown.Item onClick={() => setUser(5)}>Jerry</Dropdown.Item>
+          <Dropdown.Item onClick={() => setUser(6)}>Emil</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <img
         className='auroraAgileLogo'
-        src='../src/assets/logos/LogoSmall/AuroraAgileOriginalLogoColorSmall.png'
+        src={auroraAgileLogo}
         alt='Aurora Agile Logo in blue and green colors'
       />
     </header>

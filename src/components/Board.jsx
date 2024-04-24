@@ -8,7 +8,8 @@ import Column from './Column';
 import CreateNewTask from './CreateNewTask';
 
 const Board = () => {
-  const [user, setUser] = useState([0, 1, 2, 3, 4, 5, 6]);
+
+  const [user, setUser] = useState(null);
 
   const columns = useSelector((state) => state[columnSlice.name].columns);
   console.log(columns);
