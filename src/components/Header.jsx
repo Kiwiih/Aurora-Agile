@@ -1,4 +1,5 @@
 import { Dropdown } from 'react-bootstrap';
+import auroraAgileLogo from '../assets/logos/LogoSmall/AuroraAgileOriginalLogoColorSmall.png';
 
 const Header = ({ setUser }) => {
   return (
@@ -23,7 +24,7 @@ const Header = ({ setUser }) => {
       </Dropdown>
       <img
         className='auroraAgileLogo'
-        src='../src/assets/logos/LogoSmall/AuroraAgileOriginalLogoColorSmall.png'
+        src={auroraAgileLogo}
         alt='Aurora Agile Logo in blue and green colors'
       />
     </header>
