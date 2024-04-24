@@ -64,6 +64,7 @@ const column = ({ columnId, user, handleTaskClick }) => {
                         doDate={t.doDate}
                         assignedTo={t.assignedTo}
                         deadline={t.deadline}
+                        onTaskClick={handleTaskClick}
                       />
                     );
                   }
