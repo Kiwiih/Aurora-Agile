@@ -8,15 +8,7 @@ import CreateNewTask from './CreateNewTask';
 import ModalWindow from './ModalWindow';
 
 const Board = () => {
-  const [user, setUser] = useState([
-    'all',
-    'Moa',
-    'Alicia',
-    'Emil',
-    'Paulina',
-    'Viktor',
-    'Jerry',
-  ]);
+  const [user, setUser] = useState(null);
 
   const [modalShow, setModalShow] = useState(false);
 
