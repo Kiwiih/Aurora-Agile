@@ -59,6 +59,7 @@ const column = ({ columnId, user, handleTaskClick }) => {
                     return (
                       <Task
                         key={t.id}
+                        task={t}
                         title={t.title}
                         doDate={t.doDate}
                         assignedTo={t.assignedTo}
