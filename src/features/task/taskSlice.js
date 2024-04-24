@@ -67,13 +67,28 @@ export const taskSlice = createSlice({
         title: action.payload,
       };
     },
-    removeTask: (state, action) => {},
+    removeTask: (state, action) => {
+      const taskToRemove = action.payload;
+      // console.log('DELETE', taskToRemove);
+      state.tasks = state.tasks.filter((task) => task.id !== taskToRemove);
+    },
     moveTask: (state, action) => {},
     editTask: (state, action) => {
-      const { taskId, assignedTo } = action.payload;
+      const {
+        taskId,
+        assignedTo,
+        newTitle,
+        newDescription,
+        newDeadline,
+        newDoDate,
+      } = action.payload;
       const taskToUpdate = state.tasks.find((task) => task.id === taskId);
       if (taskToUpdate) {
         taskToUpdate.assignedTo = assignedTo;
+        taskToUpdate.title = newTitle;
+        taskToUpdate.description = newDescription;
+        taskToUpdate.deadline = newDeadline;
+        taskToUpdate.doDate = newDoDate;
       }
     },
   },

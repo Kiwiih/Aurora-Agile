@@ -57,7 +57,8 @@ main {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  justify-content: space-around;
+  justify-content: center;
+  overflow: scroll;
 }
 
 header {
@@ -76,4 +77,8 @@ header {
 
 #dropdown-basic {
   margin: 1rem 2rem;
+}
+
+.modal-title {
+  width: 100%;
 }
