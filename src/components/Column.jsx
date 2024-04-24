@@ -1,9 +1,10 @@
-import React from 'react';
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { columnSlice } from '../features/column/columnSlice';
+//Components
 import Task from './Task';
 
-const column = ({ columnId, user }) => {
+const column = ({ columnId, user, handleTaskClick }) => {
   // getting slice
   const columns = useSelector((state) => state.column.columns);
 
@@ -12,7 +13,6 @@ const column = ({ columnId, user }) => {
   const title = currentColumn.title;
 
   const tasks = useSelector((state) => state.task.tasks);
-  // console.log(tasks);
 
   return (
     <>
@@ -32,9 +32,7 @@ const column = ({ columnId, user }) => {
           {' '}
           {title}
         </div>
-
         <div className='card border-0 container py-2 flex-grow-1  shadow-sm'>
-
           {/* if user is unset then map all of the tasks */}
           {user == null
             ? tasks.map((t) => {
@@ -47,6 +45,8 @@ const column = ({ columnId, user }) => {
                       doDate={t.doDate}
                       assignedTo={t.assignedTo}
                       deadline={t.deadline}
+                      task={t}
+                      onTaskClick={handleTaskClick}
                     />
                   );
                 }
@@ -59,16 +59,17 @@ const column = ({ columnId, user }) => {
                     return (
                       <Task
                         key={t.id}
+                        task={t}
                         title={t.title}
                         doDate={t.doDate}
                         assignedTo={t.assignedTo}
                         deadline={t.deadline}
+                        onTaskClick={handleTaskClick}
                       />
                     );
                   }
                 }
               })}
-
         </div>
       </div>
     </>
