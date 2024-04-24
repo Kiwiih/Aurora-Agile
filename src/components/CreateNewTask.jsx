@@ -1,22 +1,32 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTask } from '../features/task/taskSlice';
-import taskSlice from '../features/task/taskSlice';
+//Bootstrap
+import Button from 'react-bootstrap/Button';
+import Overlay from 'react-bootstrap/Overlay';
+import Popover from 'react-bootstrap/Popover';
 
 const CreateNewTask = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
-  const [deadline, setDeadline] = useState(null);
-  const [showForm, setShowForm] = useState(false);
+  const [deadline, setDeadline] = useState('');
+  //Bootstrap
+  const [show, setShow] = useState(false);
+  const [target, setTarget] = useState(null);
+  const ref = useRef(null);
 
   const dispatch = useDispatch();
-
   // const tasks = useSelector((state) => state[taskSlice.name].tasks);
   // console.log(tasks);
 
+  const handleClick = (event) => {
+    setShow(!show);
+    setTarget(event.target);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    //displatch the form information to the taskslice
+    //dispatch the form information to the taskslice
     dispatch(
       addTask({
         title,
@@ -28,35 +38,79 @@ const CreateNewTask = () => {
     //Reset inputfields after submitting form
     setTitle('');
     setDescription('');
-    setDeadline(null);
+    setDeadline('');
+    handleClick();
   };
 
   return (
-    <div>
-      {showForm ? (
-        <form onSubmit={handleSubmit}>
-          <input
-            type='text'
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder='Title'
-          />
-          <input
-            type='text'
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            placeholder='Description'
-          />
-          <input
-            type='date'
-            value={deadline}
-            onChange={(e) => setDeadline(e.target.value)}
-          />
-          <button type='submit'>ADD TASK</button>
-        </form>
-      ) : (
-        <button onClick={() => setShowForm(true)}>CREATE NEW TASK</button>
-      )}
+    <div ref={ref}>
+      <Button
+        onClick={handleClick}
+        className='btn btn-aurora-primary rounded-pill'
+      >
+        CREATE NEW TASK
+      </Button>
+
+      <Overlay
+        show={show}
+        target={target}
+        placement='bottom'
+        container={ref}
+        containerPadding={20}
+      >
+        <Popover id='popover-contained'>
+          <Popover.Header
+            as='h3'
+            className='text-bg-aurora-dark'
+          >
+            Create new task
+          </Popover.Header>
+          <Popover.Body className='text-bg-aurora-light'>
+            <form
+              onSubmit={handleSubmit}
+              className='addForm'
+            >
+              <input
+                type='text'
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder='Title'
+                required
+                className='input-addForm'
+              />
+              <textarea
+                type='text'
+                value={description}
+                onChange={(e) => setDescription(e.target.value)}
+                placeholder='Description'
+                required
+                className='input-addForm'
+              />
+              <input
+                type='date'
+                value={deadline}
+                onChange={(e) => setDeadline(e.target.value)}
+                required
+                className='input-addForm'
+              />
+              <button
+                type='reset'
+                className='btn btn-danger rounded-pill'
+                onClick={handleClick}
+                style={{ marginRight: '0.5em', marginLeft: '1.6em' }}
+              >
+                CANCEL
+              </button>
+              <button
+                type='submit'
+                className='btn btn-aurora-accent rounded-pill'
+              >
+                ADD TASK
+              </button>
+            </form>
+          </Popover.Body>
+        </Popover>
+      </Overlay>
     </div>
   );
 };

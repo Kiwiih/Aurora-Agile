@@ -77,3 +77,9 @@ header {
 #dropdown-basic {
   margin: 1rem 2rem;
 }
+.input-addForm {
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 0.3em;
+  border: none;
+}
