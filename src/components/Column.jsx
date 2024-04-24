@@ -34,6 +34,7 @@ const column = ({ columnId, user }) => {
         </div>
 
         <div className='card border-0 container py-2 flex-grow-1  shadow-sm'>
+
           {/* if user is unset then map all of the tasks */}
           {user == null
             ? tasks.map((t) => {
@@ -67,6 +68,7 @@ const column = ({ columnId, user }) => {
                   }
                 }
               })}
+
         </div>
       </div>
     </>

@@ -8,10 +8,12 @@ import Column from './Column';
 import CreateNewTask from './CreateNewTask';
 
 const Board = () => {
+
   const [user, setUser] = useState(null);
 
   const columns = useSelector((state) => state[columnSlice.name].columns);
   console.log(columns);
+
   return (
     <>
       <div className='bodyContainer'>
