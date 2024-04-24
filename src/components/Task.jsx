@@ -1,6 +1,7 @@
 // Task
 
 import React from 'react';
+import AssignedUsers from './AssignedUsers';
 
 const Task = ({ title, description, doDate, assignedTo, deadline }) => {
   return (
@@ -19,6 +20,7 @@ const Task = ({ title, description, doDate, assignedTo, deadline }) => {
 
       <div className='d-flex justify-content-between'>
         <p className='m-0'>{assignedTo}</p>
+        <AssignedUsers />
         <p
           style={{ fontSize: '80%' }}
           className='m-0 text-aurora-subtile lh-1'
