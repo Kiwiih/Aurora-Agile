@@ -1,10 +1,14 @@
 import { useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { columnSlice } from '../features/column/columnSlice';
 //Components
 import Task from './Task';
+//  React-dnd
+import { useDrop } from 'react-dnd';
+import { moveTask } from '../features/task/taskSlice';
 
 const column = ({ columnId, user, handleTaskClick }) => {
+  const dispatch = useDispatch();
   // getting slice
   const columns = useSelector((state) => state.column.columns);
 
@@ -14,6 +18,24 @@ const column = ({ columnId, user, handleTaskClick }) => {
 
   const tasks = useSelector((state) => state.task.tasks);
 
+  // DROP - React-dnd
+  const [{ isOver }, drop] = useDrop(() => ({
+    accept: 'task',
+    drop: (task) => moveTaskHandler(task.id, columnId),
+    collect: (monitor) => ({
+      isOver: !!monitor.isOver(),
+    }),
+  }));
+
+  const moveTaskHandler = (taskId, newColumnId) => {
+    const newData = {
+      taskId: taskId,
+      newColumnId: newColumnId,
+    };
+
+    dispatch(moveTask(newData));
+  };
+
   return (
     <>
       <div
@@ -21,6 +43,7 @@ const column = ({ columnId, user, handleTaskClick }) => {
         style={{
           width: '19rem',
         }}
+        ref={drop}
       >
         <div
           className='h5 container rounded-1 py-1 text-bg-aurora-primary '
@@ -32,7 +55,12 @@ const column = ({ columnId, user, handleTaskClick }) => {
           {' '}
           {title}
         </div>
-        <div className='card border-0 container py-2 flex-grow-1  shadow-sm'>
+        <div
+          className={
+            'card border-0 container py-2 flex-grow-1 ' +
+            (isOver ? 'shadow-lg' : 'shadow-sm')
+          }
+        >
           {/* if user is unset then map all of the tasks */}
           {user == null
             ? tasks.map((t) => {

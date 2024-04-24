@@ -1,9 +1,13 @@
 import Board from './components/Board';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
 
 function App() {
   return (
     <>
-      <Board />
+      <DndProvider backend={HTML5Backend}>
+        <Board />
+      </DndProvider>
     </>
   );
 }
