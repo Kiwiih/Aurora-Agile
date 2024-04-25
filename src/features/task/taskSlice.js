@@ -72,7 +72,13 @@ export const taskSlice = createSlice({
       // console.log('DELETE', taskToRemove);
       state.tasks = state.tasks.filter((task) => task.id !== taskToRemove);
     },
-    moveTask: (state, action) => {},
+    moveTask: (state, action) => {
+      const { taskId, newColumnId } = action.payload;
+      const taskToUpdate = state.tasks.find((task) => task.id === taskId);
+      if (taskToUpdate) {
+        taskToUpdate.columnId = newColumnId;
+      }
+    },
     editTask: (state, action) => {
       const {
         taskId,
