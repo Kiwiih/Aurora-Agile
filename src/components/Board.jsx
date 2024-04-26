@@ -2,13 +2,11 @@ import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { columnSlice } from '../features/column/columnSlice';
 //Components
-import Header from './Header';
 import Column from './Column';
 import CreateNewTask from './CreateNewTask';
 import ModalWindow from './ModalWindow';
 
-const Board = () => {
-  const [user, setUser] = useState(null);
+const Board = ({user}) => {
 
   const [modalShow, setModalShow] = useState(false);
 
@@ -27,7 +25,6 @@ const Board = () => {
   return (
     <>
       <div className='bodyContainer'>
-        <Header user={user} setUser={setUser} />
         <main>
           <div className='createNewTask_section'>
             <CreateNewTask />

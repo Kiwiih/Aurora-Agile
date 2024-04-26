@@ -2,21 +2,24 @@ import { Dropdown } from 'react-bootstrap';
 import auroraAgileLogo from '../assets/logos/LogoSmall/AuroraAgileOriginalLogoColorSmall.png';
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
+import { useLocation } from 'react-router-dom';
 
 const Header = ({ user, setUser }) => {
   const [activeUser, setActiveUser] = useState(null);
+  const location = useLocation();
 
   //Sets user-filtration
   const handleUser = (userId) => {
-    setUser(userId)
-    setActiveUser(userId)     
-  }
-
+    setUser(userId);
+    setActiveUser(userId);
+  };
+  
   const users = useSelector(state => state.user.users);
 
-  return (
-    <header className='text-bg-aurora-dark'>
-      <Dropdown>
+  const handleHeaderContent = () => {
+    if (location.pathname === '/') {
+      return (
+ <Dropdown>
         <Dropdown.Toggle
           className='btn btn-aurora-primary'
           variant='secondary'
@@ -39,12 +42,21 @@ const Header = ({ user, setUser }) => {
           ))}
         </Dropdown.Menu>
       </Dropdown>
-      <img
-        className='auroraAgileLogo'
-        src={auroraAgileLogo}
-        alt='Aurora Agile Logo in blue and green colors'
-      />
-    </header>
+      );
+    }
+  };
+
+  return (
+    <>
+      <header className='text-bg-aurora-dark'>
+        <div>{handleHeaderContent()}</div>
+        <img
+          className='auroraAgileLogo'
+          src={auroraAgileLogo}
+          alt='Aurora Agile Logo in blue and green colors'
+        />
+      </header>
+    </>
   );
 };
 
