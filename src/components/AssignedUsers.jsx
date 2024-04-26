@@ -69,7 +69,7 @@ const AssignedUsers = ({ taskId }) => {
 {assignedTo.map((person, index) => (
   index < 3 && (
     <div key={index} className={`rounded-circle bg-aurora-secondary opacity-${100 - (index * 25)} circle`}>
-      {assignedTo.length > 0 && <span key={index}>{users.find((u) => u.id === person).name[0]}</span>}
+      {assignedTo.length > 0 && <span key={index}>{users.find((u) => u.id === person).name.split(" ").map(name => name.charAt(0))}</span>}
     </div>
     )
   
