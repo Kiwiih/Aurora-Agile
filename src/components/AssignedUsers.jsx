@@ -2,9 +2,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { editTask } from '../features/task/taskSlice';
 import { useState } from 'react';
 import { userSlice } from '../features/user/userSlice';
-import { store } from '../store/store';
 
-const AssignedUsers = () => {
+const AssignedUsers = ({ taskId }) => {
 
   const dispatch = useDispatch();
   const tasks = useSelector(state => state.task.tasks) || [];
@@ -15,15 +14,21 @@ const AssignedUsers = () => {
   const [showDropdown, setShowDropdown] = useState(false);
 
   const taskAssigned = tasks.map(task => task.assignedTo);
-  console.log(taskAssigned);
+  // console.log(taskAssigned);
 
-  const handleAddUser = (taskId, userId) => {
+  const currentTask = tasks.find((task) => {
+    return task.id === taskId;
+  })
+
+  const assignedTo = currentTask.assignedTo;
+
+
+  const handleAddUser = () => {
     /* dropdown öppnas nu vid klick på plus. users arrayen visas nu som options.
     fixa så att vid klick väljs denna person som assigned till tasket. 
-    koden nedan med if (task) kommer ej användas som den ser ut nu. 
-    + senare implementera att bara de som inte redan är assignade till tasket syns som options */
+    koden nedan med if (task) kommer ej användas som den ser ut nu.  */
     setShowDropdown(!showDropdown);
-    const task = tasks.find(task => task.id === taskId);
+    // const task = tasks.find(task => task.id === taskId);
     // if (task) {
     //   const updatedAssignedTo = [...task.assignedTo, userId];
     //   dispatch(editTask({ taskId, assignedTo: updatedAssignedTo }));
@@ -47,8 +52,8 @@ const AssignedUsers = () => {
   )
 ))} */}
 
-{tasks.map((task, index) => (
-  
+{/* {tasks.map((task, index) => (
+  index < 3 && (
     <div key={index} className={`rounded-circle bg-aurora-secondary opacity-${100 - (index * 25)} circle`}>
       {task.assignedTo.length > 0 && 
         task.assignedTo.map((assignedUser, userIndex) => (
@@ -56,6 +61,17 @@ const AssignedUsers = () => {
         ))
       }
     </div>
+    )
+  
+))} */}
+
+
+{assignedTo.map((person, index) => (
+  index < 3 && (
+    <div key={index} className={`rounded-circle bg-aurora-secondary opacity-${100 - (index * 25)} circle`}>
+      {assignedTo.length > 0 && <span key={index}>{person}</span>}
+    </div>
+    )
   
 ))}
 
@@ -70,6 +86,7 @@ const AssignedUsers = () => {
     <div className="rounded-circle circle bg-transparent fs-3" onClick={handleAddUser}>+</div>
 
 
+    {/* implementera senare att bara de som inte redan är assignade till tasket syns som options nedan */}
     {showDropdown && 
   <select name="users" id="users">
         {users.map((user) => (

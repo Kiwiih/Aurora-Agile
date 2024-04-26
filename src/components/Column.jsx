@@ -46,6 +46,7 @@ const column = ({ columnId, user }) => {
                   doDate={t.doDate}
                   assignedTo={t.assignedTo}
                   deadline={t.deadline}
+                  taskId={t.id}
                 />
               );
             }

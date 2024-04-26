@@ -3,7 +3,7 @@
 import React from 'react';
 import AssignedUsers from './AssignedUsers';
 
-const Task = ({ title, description, doDate, assignedTo, deadline }) => {
+const Task = ({ title, description, doDate, assignedTo, deadline, taskId }) => {
   return (
     <div className='card p-2  bg-gradient  shadow-sm  my-1'>
       <div className='d-flex justify-content-between'>
@@ -20,7 +20,7 @@ const Task = ({ title, description, doDate, assignedTo, deadline }) => {
 
       <div className='d-flex justify-content-between'>
         <p className='m-0'>{assignedTo}</p>
-        <AssignedUsers />
+        <AssignedUsers taskId={taskId} />
         <p
           style={{ fontSize: '80%' }}
           className='m-0 text-aurora-subtile lh-1'
