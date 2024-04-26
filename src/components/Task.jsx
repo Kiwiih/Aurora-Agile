@@ -1,7 +1,11 @@
 //  React-dnd
 import { useDrag } from 'react-dnd';
 
-const Task = ({ task, onTaskClick }) => {
+
+import React from 'react';
+import AssignedUsers from './AssignedUsers';
+
+const Task = ({ task, onTaskClick, taskId }) => {
   // DRAG - React-dnd
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'task',
@@ -31,7 +35,9 @@ const Task = ({ task, onTaskClick }) => {
       </div>
 
       <div className='d-flex justify-content-between'>
-        <p className='m-0'>{task.assignedTo}</p>
+        <p className='m-0'></p>
+        <AssignedUsers taskId={taskId} />
+
         <p
           style={{ fontSize: '80%' }}
           className='m-0 text-aurora-subtile lh-1'

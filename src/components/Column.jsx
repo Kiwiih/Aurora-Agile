@@ -75,6 +75,7 @@ const column = ({ columnId, user, handleTaskClick }) => {
                       deadline={t.deadline}
                       task={t}
                       onTaskClick={handleTaskClick}
+                      taskId={t.id}
                     />
                   );
                 }
