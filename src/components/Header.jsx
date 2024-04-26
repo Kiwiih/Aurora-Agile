@@ -1,6 +1,28 @@
 import { Dropdown } from 'react-bootstrap';
+import auroraAgileLogo from '../assets/logos/LogoSmall/AuroraAgileOriginalLogoColorSmall.png';
+import { useState } from 'react';
 
-const Header = ({ setUser }) => {
+const Header = ({ user, setUser }) => {
+  const [activeUser, setActiveUser] = useState(null);
+
+  //Sets user-filtration
+  const handleUser = (userId) => {
+    setUser(userId)
+    setActiveUser(userId)     
+  }
+
+  //Shows the active user
+  const users = {
+    null: "All users",
+    1: "Moa",
+    2: "Alicia",
+    3: "Paulina",
+    4: "Viktor",
+    5: "Jerry",
+    6: "Emil"
+  }
+
+
   return (
     <header className='text-bg-aurora-dark'>
       <Dropdown>
@@ -9,29 +31,70 @@ const Header = ({ setUser }) => {
           variant='secondary'
           id='dropdown-basic'
         >
-          Select User
+          {users[user]}
         </Dropdown.Toggle>
         <Dropdown.Menu className='btn btn-aurora-secondary'>
-          <Dropdown.Item onClick={() => setUser('all')}>
+          <Dropdown.Item
+            onClick={() => handleUser(null)}
+            style={{
+              backgroundColor: activeUser === null ? '#ffffff' : 'initial',
+            }}
+          >
             All users
           </Dropdown.Item>
-          <Dropdown.Item onClick={() => setUser('Moa')}>Moa</Dropdown.Item>
-          <Dropdown.Item onClick={() => setUser('Alicia')}>
+          <Dropdown.Item
+            onClick={() => handleUser(1)}
+            style={{
+              backgroundColor: activeUser === 1 ? '#ffffff' : 'initial',
+            }}
+          >
+            Moa
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => handleUser(2)}
+            style={{
+              backgroundColor: activeUser === 2 ? '#ffffff' : 'initial',
+            }}
+          >
             Alicia
           </Dropdown.Item>
-          <Dropdown.Item onClick={() => setUser('Paulina')}>
+          <Dropdown.Item
+            onClick={() => handleUser(3)}
+            style={{
+              backgroundColor: activeUser === 3 ? '#ffffff' : 'initial',
+            }}
+          >
             Paulina
           </Dropdown.Item>
-          <Dropdown.Item onClick={() => setUser('Viktor')}>
+          <Dropdown.Item
+            onClick={() => handleUser(4)}
+            style={{
+              backgroundColor: activeUser === 4 ? '#ffffff' : 'initial',
+            }}
+          >
             Viktor
           </Dropdown.Item>
-          <Dropdown.Item onClick={() => setUser('Jerry')}>Jerry</Dropdown.Item>
-          <Dropdown.Item onClick={() => setUser('Emil')}>Emil</Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => handleUser(5)}
+            style={{
+              backgroundColor: activeUser === 5 ? '#ffffff' : 'initial',
+            }}
+          >
+            Jerry
+          </Dropdown.Item>
+          <Dropdown.Item
+            onClick={() => handleUser(6)}
+            style={{
+              backgroundColor: activeUser === 6 ? '#ffffff' : 'initial',
+            }}
+          >
+            Emil
+          </Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
       <img
         className='auroraAgileLogo'
-        src='../src/assets/logos/LogoSmall/AuroraAgileOriginalLogoColorSmall.png'
+        src={auroraAgileLogo}
         alt='Aurora Agile Logo in blue and green colors'
       />
     </header>

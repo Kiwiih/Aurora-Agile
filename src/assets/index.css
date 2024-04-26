@@ -57,7 +57,8 @@ main {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
-  justify-content: space-around;
+  justify-content: center;
+  overflow: scroll;
 }
 
 header {
@@ -76,4 +77,35 @@ header {
 
 #dropdown-basic {
   margin: 1rem 2rem;
+}
+
+.modal-title {
+  width: 100%;
+}
+
+.input-addForm {
+  width: 100%;
+  margin-bottom: 1em;
+  padding: 0.3em;
+  border: none;
+}
+
+.listHolder{
+  display: flex;
+  flex-flow: column nowrap;
+  gap: .5rem;
+  margin: 1rem;
+}
+
+.listItem{
+  list-style: none;
+  border: 1px solid lightgray;
+  padding: .75rem;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  box-shadow: 0px 1px 25px 2px rgba(0, 0, 0, 0.178);
 }

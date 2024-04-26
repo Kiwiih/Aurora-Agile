@@ -62,18 +62,39 @@ export const taskSlice = createSlice({
   initialState,
   reducers: {
     addTask: (state, action) => {
-      const newTask = {
+      state.tasks.push({
         id: nanoid(),
-        title: action.payload,
-      };
+        ...action.payload,
+      });
     },
-    removeTask: (state, action) => {},
-    moveTask: (state, action) => {},
+    removeTask: (state, action) => {
+      const taskToRemove = action.payload;
+      // console.log('DELETE', taskToRemove);
+      state.tasks = state.tasks.filter((task) => task.id !== taskToRemove);
+    },
+    moveTask: (state, action) => {
+      const { taskId, newColumnId } = action.payload;
+      const taskToUpdate = state.tasks.find((task) => task.id === taskId);
+      if (taskToUpdate) {
+        taskToUpdate.columnId = newColumnId;
+      }
+    },
     editTask: (state, action) => {
-      const { taskId, assignedTo } = action.payload;
+      const {
+        taskId,
+        assignedTo,
+        newTitle,
+        newDescription,
+        newDeadline,
+        newDoDate,
+      } = action.payload;
       const taskToUpdate = state.tasks.find((task) => task.id === taskId);
       if (taskToUpdate) {
         taskToUpdate.assignedTo = assignedTo;
+        taskToUpdate.title = newTitle;
+        taskToUpdate.description = newDescription;
+        taskToUpdate.deadline = newDeadline;
+        taskToUpdate.doDate = newDoDate;
       }
     },
   },
