@@ -27,7 +27,7 @@ const Board = () => {
   return (
     <>
       <div className='bodyContainer'>
-        <Header setUser={setUser} />
+        <Header user={user} setUser={setUser} />
         <main>
           <div className='createNewTask_section'>
             <CreateNewTask />
