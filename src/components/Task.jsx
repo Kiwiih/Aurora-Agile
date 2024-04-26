@@ -19,7 +19,7 @@ const Task = ({ title, description, doDate, assignedTo, deadline, taskId }) => {
       </div>
 
       <div className='d-flex justify-content-between'>
-        <p className='m-0'>{assignedTo}</p>
+        <p className='m-0'></p>
         <AssignedUsers taskId={taskId} />
         <p
           style={{ fontSize: '80%' }}

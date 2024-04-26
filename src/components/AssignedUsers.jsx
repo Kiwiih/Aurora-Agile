@@ -13,9 +13,6 @@ const AssignedUsers = ({ taskId }) => {
 
   const [showDropdown, setShowDropdown] = useState(false);
 
-  // const taskAssigned = tasks.map(task => task.assignedTo);
-  // console.log(taskAssigned);
-
   const currentTask = tasks.find((task) => {
     return task.id === taskId;
   })
@@ -37,52 +34,25 @@ const AssignedUsers = ({ taskId }) => {
 
   return (
     <div className="assigned">
-    {/* jobbar på conditional rendering med följande logik: 
-    första cirkeln syns vid 1 assignedUser, andra vid 2, tredje vid 3. 
-    fler än 3 kommer ej synas.
-    Plusset ska enbart synas i modalen, ej i card. - eller? fixa senare isf.
+    {/*
+    TODO: Plusset ska enbart synas i modalen, ej i card. - eller? fixa senare isf.
     */}
 
-{/* denna är lite knas. den slår ihop flera användare i samma cirkel om det finns flera användare i samma task */}
-{/* {taskAssigned.map((assigned, index) => (
-  index < 3 && (
-    <div key={index} className={`rounded-circle bg-aurora-secondary opacity-${100 - (index * 25)} circle`}>
-      {assigned}
-    </div>
-  )
-))} */}
-
-{/* {tasks.map((task, index) => (
-  index < 3 && (
-    <div key={index} className={`rounded-circle bg-aurora-secondary opacity-${100 - (index * 25)} circle`}>
-      {task.assignedTo.length > 0 && 
-        task.assignedTo.map((assignedUser, userIndex) => (
-          <span key={userIndex}>{assignedUser}</span>
-        ))
-      }
-    </div>
-    )
-  
-))} */}
 
 
+
+{/* assigned to är vilka som är assigned på aktuellt task.
+  den visar max 3 cirklar. den visar första bokstaven i för- och efternamn.
+  vid mer än ett efternamn syns bara första. */}
 {assignedTo.map((person, index) => (
   index < 3 && (
     <div key={index} className={`rounded-circle bg-aurora-secondary opacity-${100 - (index * 25)} circle`}>
-      {assignedTo.length > 0 && <span key={index}>{users.find((u) => u.id === person).name.split(" ").map(name => name.charAt(0))}</span>}
+      {assignedTo.length > 0 && <span key={index}>{users.find((u) => u.id === person).name.split(" ").map((name, i) => i < 2 && name.charAt(0))}</span>}
     </div>
     )
   
 ))}
 
-
-    {/* {taskAssigned.length >= 1 && <div className="rounded-circle bg-aurora-secondary opacity-100 circle">AB</div>}
-    {taskAssigned.length >= 2 && <div className="rounded-circle bg-aurora-secondary opacity-75 circle">CD</div>}
-    {taskAssigned.length >= 3 && <div className="rounded-circle bg-aurora-secondary opacity-50 circle">EF</div>} */}
-
-    {/* <div className="rounded-circle bg-aurora-secondary opacity-100 circle">AB</div> */}
-    {/* <div className="rounded-circle bg-aurora-secondary opacity-75 circle">CD</div> */}
-    {/* <div className="rounded-circle bg-aurora-secondary opacity-50 circle">EF</div> */}
     <div className="rounded-circle circle bg-transparent fs-3" onClick={handleAddUser}>+</div>
 
 
