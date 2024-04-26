@@ -10,7 +10,18 @@ import MissingPage from './components/MissingPage';
 
 function App() {
   const [user, setUser] = useState(null);
-  
+
+    const [modalShow, setModalShow] = useState(false);
+
+    // State For Selecting Task
+    const [selectedTask, setSelectedTask] = useState(null);
+
+    // Function To Choose The Selected Task
+    const handleTaskClick = (task) => {
+      console.log('Klickat på task: ', task);
+      setModalShow(true);
+      setSelectedTask(task);
+    };
 
   return (
     <>
@@ -23,15 +34,30 @@ function App() {
           <Routes>
             <Route
               index
-              element={<Board user={user} />}
+              element={
+                <Board
+                  setModalShow={setModalShow}
+                  modalShow={modalShow}
+                  selectedTask={selectedTask}
+                  handleTaskClick={handleTaskClick}
+                  user={user}
+                />
+              }
             />
             <Route
               path='/list'
-              element={<List />}
+              element={
+                <List
+                  setModalShow={setModalShow}
+                  modalShow={modalShow}
+                  selectedTask={selectedTask}
+                  handleTaskClick={handleTaskClick}
+                />
+              }
             />
             <Route
               path='*'
-              element={<MissingPage/>}
+              element={<MissingPage />}
             />
           </Routes>
           <Footer />

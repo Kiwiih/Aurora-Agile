@@ -6,19 +6,7 @@ import Column from './Column';
 import CreateNewTask from './CreateNewTask';
 import ModalWindow from './ModalWindow';
 
-const Board = ({user}) => {
-
-  const [modalShow, setModalShow] = useState(false);
-
-  // State For Selecting Task
-  const [selectedTask, setSelectedTask] = useState(null);
-
-  // Function To Choose The Selected Task
-  const handleTaskClick = (task) => {
-    console.log('Klickat på task: ', task);
-    setModalShow(true);
-    setSelectedTask(task);
-  };
+const Board = ({modalShow, setModalShow, selectedTask, handleTaskClick, user}) => {
 
   const columns = useSelector((state) => state[columnSlice.name].columns);
   // console.log(columns);
