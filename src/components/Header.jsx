@@ -2,15 +2,25 @@ import { Dropdown } from 'react-bootstrap';
 import auroraAgileLogo from '../assets/logos/LogoSmall/AuroraAgileOriginalLogoColorSmall.png';
 import { useState } from 'react';
 
-const Header = ({ setUser }) => {
+const Header = ({ user, setUser }) => {
   const [activeUser, setActiveUser] = useState(null);
 
+  //Sets user-filtration
   const handleUser = (userId) => {
     setUser(userId)
     setActiveUser(userId)     
   }
 
-  console.log(setUser, activeUser)
+  //Shows the active user
+  const users = {
+    null: "All users",
+    1: "Moa",
+    2: "Alicia",
+    3: "Paulina",
+    4: "Viktor",
+    5: "Jerry",
+    6: "Emil"
+  }
 
 
   return (
@@ -21,7 +31,7 @@ const Header = ({ setUser }) => {
           variant='secondary'
           id='dropdown-basic'
         >
-          Select User
+          {users[user]}
         </Dropdown.Toggle>
         <Dropdown.Menu className='btn btn-aurora-secondary'>
           <Dropdown.Item
