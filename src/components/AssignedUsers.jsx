@@ -3,7 +3,7 @@ import { editTask } from '../features/task/taskSlice';
 import { useState } from 'react';
 import { userSlice } from '../features/user/userSlice';
 
-const AssignedUsers = ({ taskId }) => {
+const AssignedUsers = ({ taskId, user }) => {
 
   const dispatch = useDispatch();
   const tasks = useSelector(state => state.task.tasks) || [];
@@ -13,12 +13,30 @@ const AssignedUsers = ({ taskId }) => {
 
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const currentTask = tasks.find((task) => {
+// om user är 1 så vill vi bara ha de tasks där assignedTo innehåller 1. includes()
+
+    let currentTask;
+    
+    if (user === null) { currentTask = tasks.find((task) => {
     return task.id === taskId;
   })
+    }
+
+
+    if (user !== null) { 
+      tasks.forEach(t => {
+        if (t.assignedTo.includes(user)) {
+          currentTask = t;
+        }
+      });
+    //   currentTask = tasks.find((task) => {
+    //   return task.id === taskId;
+    // })
+      }
+
 
   const assignedTo = currentTask.assignedTo;
-
+  // console.log(user)
 
   const handleAddUser = () => {
     /* dropdown öppnas nu vid klick på plus. users arrayen visas nu som options.
@@ -31,6 +49,9 @@ const AssignedUsers = ({ taskId }) => {
     //   dispatch(editTask({ taskId, assignedTo: updatedAssignedTo }));
     // }
   }
+
+
+
 
   return (
     <div className="assigned">
@@ -66,5 +87,7 @@ const AssignedUsers = ({ taskId }) => {
     </div>
   )
 }
+
+
 
 export default AssignedUsers;
