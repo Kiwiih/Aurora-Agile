@@ -53,12 +53,58 @@ main {
   margin-bottom: 1em;
 }
 
+.input-reset {
+  all: unset;
+}
+
+.input-reset:hover {
+  cursor: pointer;
+}
+
+.input-reset:focus {
+  background-color: hsla(0, 0%, 100%, 0.708);
+  color: black;
+  border-radius: 4px;
+}
+
+
+
+.plus-icon {
+  color: white;
+  background-color: black;
+  transition: background-color 0.3s ease, color 0.2s ease;
+}
+
+.plus-icon:hover {
+  color: lightgrey;
+  background-color: #307CB5;
+  cursor: pointer;
+}
+
 .column_section {
   display: flex;
   flex-direction: row;
   flex-grow: 1;
   justify-content: center;
   overflow: scroll;
+}
+
+.columnHeader {
+
+  .deleteBtn {
+    opacity: 0;
+    transition: 300ms;
+  }
+
+  &:hover {
+    .deleteBtn {
+      opacity: 1;
+
+      &:hover {
+        color: rgba(178, 0, 0, 0.656);
+      }
+    }
+  }
 }
 
 header {
