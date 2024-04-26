@@ -97,6 +97,8 @@ const column = ({ currentColumn, columnId, user, handleTaskClick }) => {
                       deadline={t.deadline}
                       task={t}
                       onTaskClick={handleTaskClick}
+                      taskId={t.id}
+                      user={user}
                     />
                   );
                 }
@@ -115,6 +117,7 @@ const column = ({ currentColumn, columnId, user, handleTaskClick }) => {
                         assignedTo={t.assignedTo}
                         deadline={t.deadline}
                         onTaskClick={handleTaskClick}
+                        user={user}
                       />
                     );
                   }

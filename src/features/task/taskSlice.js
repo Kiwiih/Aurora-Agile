@@ -11,7 +11,7 @@ const initialState = {
         'Implementera användarautentisering med hjälp av JWT och Express-session.',
       deadline: '2024-05-10',
       doDate: '2024-04-20',
-      assignedTo: [1],
+      assignedTo: [1, 2, 3, 4, 5, 6],
       columnId: 1,
     },
     {

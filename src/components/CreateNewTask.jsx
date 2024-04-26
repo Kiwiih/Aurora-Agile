@@ -10,6 +10,9 @@ const CreateNewTask = () => {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [deadline, setDeadline] = useState('');
+  const [assignedTo, setAssignedTo] = useState('');
+  const [doDate, setDoDate] = useState();
+
   //Bootstrap
   const [show, setShow] = useState(false);
   const [target, setTarget] = useState(null);
@@ -20,8 +23,10 @@ const CreateNewTask = () => {
   // console.log(tasks);
 
   const handleClick = (event) => {
-    setShow(!show);
-    setTarget(event.target);
+    if (event) {
+      setShow(!show);
+      setTarget(event.target);
+    }
   };
 
   const handleSubmit = (e) => {
@@ -33,13 +38,15 @@ const CreateNewTask = () => {
         description,
         deadline,
         columnId: 1,
+        assignedTo,
+        doDate,
       })
     );
     //Reset inputfields after submitting form
     setTitle('');
     setDescription('');
     setDeadline('');
-    handleClick();
+    handleClick(e);
   };
 
   return (
@@ -83,14 +90,12 @@ const CreateNewTask = () => {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder='Description'
-                required
                 className='input-addForm'
               />
               <input
                 type='date'
                 value={deadline}
                 onChange={(e) => setDeadline(e.target.value)}
-                required
                 className='input-addForm'
               />
               <button

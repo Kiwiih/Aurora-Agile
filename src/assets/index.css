@@ -41,7 +41,7 @@ main {
   background-color: #cde2f2;
   display: flex;
   flex-direction: column;
-  /* height: 100%; */
+  /* height: auto; */
   flex-grow: 1;
 }
 
@@ -134,4 +134,44 @@ header {
   margin-bottom: 1em;
   padding: 0.3em;
   border: none;
+}
+
+.listHolder {
+  display: flex;
+  flex-flow: column nowrap;
+  gap: .5rem;
+  margin: 1rem;
+  height: auto;
+}
+
+.listItem {
+  list-style: none;
+  border: 1px solid lightgray;
+  padding: .75rem;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0px 1px 25px 2px rgba(0, 0, 0, 0.178);
+}
+
+footer {
+  height: 10vh;
+  width: 100%;
+  font-weight: 600;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.titleDesc {
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.listContainer {
+  min-height: 75vh;
 }
