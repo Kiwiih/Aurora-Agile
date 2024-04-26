@@ -13,7 +13,7 @@ const AssignedUsers = ({ taskId }) => {
 
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const taskAssigned = tasks.map(task => task.assignedTo);
+  // const taskAssigned = tasks.map(task => task.assignedTo);
   // console.log(taskAssigned);
 
   const currentTask = tasks.find((task) => {
@@ -69,7 +69,7 @@ const AssignedUsers = ({ taskId }) => {
 {assignedTo.map((person, index) => (
   index < 3 && (
     <div key={index} className={`rounded-circle bg-aurora-secondary opacity-${100 - (index * 25)} circle`}>
-      {assignedTo.length > 0 && <span key={index}>{person}</span>}
+      {assignedTo.length > 0 && <span key={index}>{users.find((u) => u.id === person).name[0]}</span>}
     </div>
     )
   
