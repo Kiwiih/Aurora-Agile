@@ -53,8 +53,6 @@ const AssignedUsers = ({ taskId, user }) => {
     // }
   };
 
-  const placement = 'hej';
-
   return (
     <div className='assigned'>
       {/*
