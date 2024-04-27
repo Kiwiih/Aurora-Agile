@@ -3,6 +3,11 @@ import { editTask } from '../features/task/taskSlice';
 import { useState } from 'react';
 import { userSlice } from '../features/user/userSlice';
 
+// Bootstrap:
+import Button from 'react-bootstrap/Button';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import Tooltip from 'react-bootstrap/Tooltip';
+
 const AssignedUsers = ({ taskId, user }) => {
   const dispatch = useDispatch();
   const tasks = useSelector((state) => state.task.tasks) || [];
@@ -48,6 +53,8 @@ const AssignedUsers = ({ taskId, user }) => {
     // }
   };
 
+  const placement = 'hej';
+
   return (
     <div className='assigned'>
       {/*
@@ -60,24 +67,48 @@ const AssignedUsers = ({ taskId, user }) => {
       {assignedTo.map(
         (person, index) =>
           index < 3 && (
-            <div
-              key={index}
-              className={`me-1 rounded-circle text-bg-aurora-secondary opacity-${100 - index * 25} circle`}
-            >
-              {assignedTo.length > 0 && (
-                <span key={index}>
-                  {users
-                    .find((u) => u.id === person)
-                    .name.split(' ')
-                    .map((name, i) => i < 2 && name.charAt(0))}
-                </span>
-              )}
+            // this div is a container for everyting that it means to be a circe :)
+            <div key={index}>
+              {/* Bootstrap tooltip cor the circle: */}
+              <OverlayTrigger
+                overlay={
+                  <Tooltip> {users.find((u) => u.id === person).name}</Tooltip>
+                }
+              >
+                {/* circle */}
+                <div
+                  className={`me-1 rounded-circle text-bg-aurora-secondary opacity-${100 - index * 25} circle`}
+                >
+                  {assignedTo.length > 0 && (
+                    <span key={index}>
+                      {users
+                        .find((u) => u.id === person)
+                        .name.split(' ')
+                        .map((name, i) => i < 2 && name.charAt(0))}
+                    </span>
+                  )}
+                </div>
+              </OverlayTrigger>
             </div>
           )
       )}
+
       {/* om det finns fler än 3 assignade till uppgiften så vissas (...) */}
       {assignedTo.length > 3 && (
-        <div className='rounded-circle border bg-light circle'>...</div>
+        <OverlayTrigger
+          overlay={
+            <Tooltip>
+              {assignedTo.map((person, i) => (
+                <span key={i}>
+                  {users.find((u) => u.id === person).name}
+                  <br />
+                </span>
+              ))}
+            </Tooltip>
+          }
+        >
+          <div className='rounded-circle border bg-light circle'>...</div>
+        </OverlayTrigger>
       )}
 
       <div
