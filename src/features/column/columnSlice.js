@@ -21,9 +21,34 @@ const initialState = {
 export const columnSlice = createSlice({
   name: 'column',
   initialState,
-  reducers: {},
+  reducers: {
+    addColumn: (state) => {
+      state.columns.push({
+        id: nanoid(),
+        title: `Column`,
+      });
+    },
+    removeColumn: (state, action) => {
+      const columnToRemove = action.payload;
+      // console.log('Remove', columnToRemove);
+      state.columns = state.columns.filter(
+        (col) => col.id !== columnToRemove.id
+      );
+    },
+    moveColumn: (state, action) => {},
+    editColumn: (state, action) => {
+      const { currentColumn, newTitle } = action.payload;
+      console.log('Change title from: ', currentColumn.title, 'to', newTitle);
+      const columnToUpdate = state.columns.find(
+        (col) => col.id === currentColumn.id
+      );
+      if (columnToUpdate) {
+        columnToUpdate.title = newTitle;
+      }
+    },
+  },
 });
 
-export const {} = columnSlice.actions;
+export const { addColumn, removeColumn, editColumn } = columnSlice.actions;
 
 export default columnSlice.reducer;

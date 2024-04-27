@@ -5,6 +5,7 @@ import { columnSlice } from '../features/column/columnSlice';
 import Column from './Column';
 import CreateNewTask from './CreateNewTask';
 import ModalWindow from './ModalWindow';
+import AddColumn from './AddColumn';
 
 const Board = ({modalShow, setModalShow, selectedTask, handleTaskClick, user}) => {
 
@@ -21,11 +22,15 @@ const Board = ({modalShow, setModalShow, selectedTask, handleTaskClick, user}) =
             {columns.map((column) => (
               <Column
                 key={column.id}
+                currentColumn={column}
                 columnId={column.id}
                 user={user}
                 handleTaskClick={handleTaskClick}
               />
             ))}
+            <div className='createNewColumn_section my-3 mx-1'>
+              <AddColumn />
+            </div>
           </div>
         </main>
         {selectedTask && (

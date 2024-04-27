@@ -1,22 +1,20 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { columnSlice } from '../features/column/columnSlice';
+// Slices
+
+import { moveTask } from '../features/task/taskSlice';
+import { removeColumn, editColumn } from '../features/column/columnSlice';
 //Components
 import Task from './Task';
+import DeleteColumn from './DeleteColumn';
 //  React-dnd
 import { useDrop } from 'react-dnd';
-import { moveTask } from '../features/task/taskSlice';
 
-const column = ({ columnId, user, handleTaskClick }) => {
-  const dispatch = useDispatch();
-  // getting slice
-  const columns = useSelector((state) => state.column.columns);
-
-  // extract information avout the current column
-  const currentColumn = columns.find((column) => column.id === columnId);
-  const title = currentColumn.title;
+const column = ({ currentColumn, columnId, user, handleTaskClick }) => {
+  const [columnTitle, setColumnTitle] = useState(currentColumn.title);
 
   const tasks = useSelector((state) => state.task.tasks);
+  const dispatch = useDispatch();
 
   // DROP - React-dnd
   const [{ isOver }, drop] = useDrop(() => ({
@@ -36,8 +34,22 @@ const column = ({ columnId, user, handleTaskClick }) => {
     dispatch(moveTask(newData));
   };
 
+  const removeColumnHandler = () => {
+    dispatch(removeColumn(currentColumn));
+  };
+
+  const editColumnHandler = () => {
+    const editedColumn = {
+      currentColumn: currentColumn,
+      newTitle: columnTitle,
+      // newColor: color, //! If we want to change color
+    };
+    dispatch(editColumn(editedColumn));
+  };
+
   return (
     <>
+      {/* CONTAINER */}
       <div
         className='d-flex flex-column my-3 mx-1'
         style={{
@@ -45,16 +57,26 @@ const column = ({ columnId, user, handleTaskClick }) => {
         }}
         ref={drop}
       >
+        {/* COLUMN HEADER */}
         <div
-          className='h5 container rounded-1 py-1 text-bg-aurora-primary '
+          className='columnHeader h5 container d-flex justify-content-around rounded-1 py-1 text-bg-aurora-primary '
           style={{
             marginLeft: '0',
-            width: 'fit-content',
           }}
         >
-          {' '}
-          {title}
+          <input
+            className='input-reset'
+            spellCheck='false'
+            type='text'
+            value={columnTitle}
+            onChange={(e) => setColumnTitle(e.target.value)}
+            onBlur={() => editColumnHandler()}
+          ></input>
+
+          <DeleteColumn onClick={() => removeColumnHandler()} />
         </div>
+
+        {/* TASKS HOLDER */}
         <div
           className={
             'card border-0 container py-2 flex-grow-1 ' +
