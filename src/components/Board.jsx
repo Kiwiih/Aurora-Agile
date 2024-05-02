@@ -13,7 +13,6 @@ const Board = ({modalShow, setModalShow, selectedTask, handleTaskClick, user}) =
   // console.log(columns);
   return (
     <>
-      <div className='bodyContainer'>
         <main>
           <div className='createNewTask_section'>
             <CreateNewTask />
@@ -40,7 +39,6 @@ const Board = ({modalShow, setModalShow, selectedTask, handleTaskClick, user}) =
             task={selectedTask}
           />
         )}
-      </div>
     </>
   );
 };
