@@ -9,9 +9,12 @@ import Task from './Task';
 import DeleteColumn from './DeleteColumn';
 //  React-dnd
 import { useDrop } from 'react-dnd';
+//Bootstrap
+import Alert from 'react-bootstrap/Alert';
 
 const column = ({ currentColumn, columnId, user, handleTaskClick }) => {
   const [columnTitle, setColumnTitle] = useState(currentColumn.title);
+  const [showDeletePopup, setShowDeletePopup] = useState(false);
 
   const tasks = useSelector((state) => state.task.tasks);
   const dispatch = useDispatch();
@@ -35,7 +38,16 @@ const column = ({ currentColumn, columnId, user, handleTaskClick }) => {
   };
 
   const removeColumnHandler = () => {
+    setShowDeletePopup(true);
+  };
+
+  const confirmDeleteColumn = () => {
     dispatch(removeColumn(currentColumn));
+    setShowDeletePopup(false);
+  };
+
+  const cancelDeleteColumn = () => {
+    setShowDeletePopup(false);
   };
 
   const editColumnHandler = () => {
@@ -127,6 +139,37 @@ const column = ({ currentColumn, columnId, user, handleTaskClick }) => {
               })}
         </div>
       </div>
+      {showDeletePopup && (
+        <div
+          style={{
+            position: 'absolute',
+            zIndex: '100',
+          }}
+        >
+          <Alert
+            variant='warning'
+            className='delete-popup'
+          >
+            <Alert.Heading>
+              Are you sure you want to delete this column?
+            </Alert.Heading>
+            <hr />
+            <button
+              onClick={confirmDeleteColumn}
+              className='btn btn-danger rounded-pill'
+              style={{ marginRight: '0.5em' }}
+            >
+              Yes
+            </button>
+            <button
+              onClick={cancelDeleteColumn}
+              className='btn btn-warning rounded-pill'
+            >
+              No
+            </button>
+          </Alert>
+        </div>
+      )}
     </>
   );
 };

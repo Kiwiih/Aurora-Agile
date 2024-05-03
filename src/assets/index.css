@@ -61,12 +61,14 @@ main {
 .plus-icon {
   color: white;
   background-color: black;
-  transition: background-color 0.3s ease, color 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.2s ease;
 }
 
 .plus-icon:hover {
   color: lightgrey;
-  background-color: #307CB5;
+  background-color: #307cb5;
   cursor: pointer;
 }
 
@@ -79,7 +81,6 @@ main {
 }
 
 .columnHeader {
-
   .deleteBtn {
     opacity: 0;
     transition: 300ms;
@@ -128,7 +129,7 @@ header {
 .listHolder {
   display: flex;
   flex-flow: column nowrap;
-  gap: .5rem;
+  gap: 0.5rem;
   margin: 1rem;
   height: auto;
 }
@@ -136,7 +137,7 @@ header {
 .listItem {
   list-style: none;
   border: 1px solid lightgray;
-  padding: .75rem;
+  padding: 0.75rem;
   border-radius: 10px;
   display: flex;
   flex-flow: row nowrap;
@@ -196,3 +197,4 @@ footer {
 .dragging {
   cursor: grabbing
 }
+
