@@ -9,35 +9,11 @@ import Tooltip from 'react-bootstrap/Tooltip';
 
 const AssignedUsers = ({ task, show }) => {
   const users = useSelector((state) => state.user.users);
-  const [selected_users, set_Selected_users] = useState(task.assignedTo);
+  const [selected_users, set_Selected_users] = useState([]);
 
   const [showDropdown, setShowDropdown] = useState(false);
 
   const dispatch = useDispatch();
-
- 
-
-  const handleAssignedUsers = () => {
-
-    // const usersToAdd = selected_users.map((user) => user.id);
-
-    const editedTask = {
-      // taskId: task.id,
-      // assignedTo: [...task.assignedTo, ...selected_users],
-      // assignedTo: selected_users,
-      // title: task.title,
-      // description: task.description,
-      // deadline: task.deadline,
-      // doDate: task.doDate,
-      // columnId: task.columnId,
-
-      ...task,
-      assignedTo: [...task.assignedTo, ...selected_users],
-    };
-
-    // dispatch(editTask(editedTask));
-    console.log(task.assignedTo);
-  };
 
   const handleAddUser = (e) => {
     e.stopPropagation();
@@ -112,7 +88,7 @@ const AssignedUsers = ({ task, show }) => {
       {showDropdown && (
         <>
           <MultiSelectDropDown
-            handleAssignedUsers={handleAssignedUsers}
+            task={task}
             users={users}
             selected_users={selected_users}
             set_Selected_users={set_Selected_users}
