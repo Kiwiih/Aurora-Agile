@@ -9,17 +9,17 @@ const Task = ({ task, onTaskClick }) => {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: 'task',
     item: { id: task.id },
-    collect: (monitor) => ({
+    collect: (monitor, event) => ({
       isDragging: monitor.isDragging(),
     }),
   }));
 
   return (
     <div
-      className='card p-2  bg-gradient  shadow-sm  my-1'
+      className='card p-2  bg-gradient  shadow-sm  my-1 taskCard'
       onClick={() => onTaskClick(task)}
       ref={drag}
-      style={{ visibility: isDragging && 'hidden' }}
+      style={{ visibility: isDragging && 'hidden'}}
     >
       <div className='d-flex justify-content-between'>
         <h3 className='h6 text-truncate'>{task.title}</h3>

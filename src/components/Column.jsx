@@ -63,7 +63,8 @@ const column = ({ currentColumn, columnId, user, handleTaskClick }) => {
     <>
       {/* CONTAINER */}
       <div
-        className='d-flex flex-column my-3 mx-1'
+        id='columnHolder'
+        className='mx-2'
         style={{
           width: '19rem',
         }}
@@ -90,6 +91,7 @@ const column = ({ currentColumn, columnId, user, handleTaskClick }) => {
 
         {/* TASKS HOLDER */}
         <div
+          id='column'
           className={
             'card border-0 container py-2 flex-grow-1 ' +
             (isOver ? 'shadow-lg' : 'shadow-sm')

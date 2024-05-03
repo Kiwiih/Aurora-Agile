@@ -1,14 +1,43 @@
-import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useState, useEffect } from 'react';
+import MultiSelectDropDown from './MultiSelectDropDown';
+import { editTask } from '../features/task/taskSlice';
 
 // Bootstrap:
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 
-const AssignedUsers = ({ task }) => {
+const AssignedUsers = ({ task, show }) => {
   const users = useSelector((state) => state.user.users);
+  const [selected_users, set_Selected_users] = useState(task.assignedTo);
 
   const [showDropdown, setShowDropdown] = useState(false);
+
+  const dispatch = useDispatch();
+
+ 
+
+  const handleAssignedUsers = () => {
+
+    // const usersToAdd = selected_users.map((user) => user.id);
+
+    const editedTask = {
+      // taskId: task.id,
+      // assignedTo: [...task.assignedTo, ...selected_users],
+      // assignedTo: selected_users,
+      // title: task.title,
+      // description: task.description,
+      // deadline: task.deadline,
+      // doDate: task.doDate,
+      // columnId: task.columnId,
+
+      ...task,
+      assignedTo: [...task.assignedTo, ...selected_users],
+    };
+
+    // dispatch(editTask(editedTask));
+    console.log(task.assignedTo);
+  };
 
   const handleAddUser = (e) => {
     e.stopPropagation();
@@ -21,19 +50,15 @@ const AssignedUsers = ({ task }) => {
 
   return (
     <div className='assigned'>
-      {/*
-    TODO: Plusset ska enbart synas i modalen, ej i card. - eller? fixa senare isf.
-    */}
-
       {/* assigned to är vilka som är assigned på aktuellt task.
   den visar max 3 cirklar. den visar första bokstaven i för- och efternamn.
   vid mer än ett efternamn syns bara första. */}
       {task.assignedTo.map(
         (person, index) =>
           index < 3 && (
-            // this div is a container for everyting that it means to be a circe :)
+            // this div is a container for everyting that it meant to be a circle.
             <div key={index}>
-              {/* Bootstrap tooltip cor the circle: */}
+              {/* Bootstrap tooltip for the circle: */}
               <OverlayTrigger
                 overlay={
                   <Tooltip> {users.find((u) => u.id === person).name}</Tooltip>
@@ -57,7 +82,7 @@ const AssignedUsers = ({ task }) => {
           )
       )}
 
-      {/* om det finns fler än 3 assignade till uppgiften så vissas (...) */}
+      {/* om det finns fler än 3 assignade till uppgiften så visas (...) */}
       {task.assignedTo.length > 3 && (
         <OverlayTrigger
           overlay={
@@ -75,29 +100,38 @@ const AssignedUsers = ({ task }) => {
         </OverlayTrigger>
       )}
 
-      <div
-        className='rounded-circle circle bg-transparent fs-3'
-        onClick={handleAddUser}
-      >
-        +
-      </div>
-
-      {/* implementera senare att bara de som inte redan är assignade till tasket syns som options nedan */}
-      {showDropdown && (
-        <select
-          name='users'
-          id='users'
-          onClick={(e) => e.stopPropagation()}
+      {show && (
+        <div
+          className='rounded-circle circle bg-transparent fs-3'
+          onClick={handleAddUser}
         >
-          {users.map((user) => (
-            <option
-              key={user.id}
-              value={user.id}
-            >
-              {user.name}
-            </option>
-          ))}
-        </select>
+          +
+        </div>
+      )}
+
+      {showDropdown && (
+        <>
+          <MultiSelectDropDown
+            handleAssignedUsers={handleAssignedUsers}
+            users={users}
+            selected_users={selected_users}
+            set_Selected_users={set_Selected_users}
+          />
+          {/* <select
+            name='users'
+            id='users'
+            onClick={(e) => e.stopPropagation()}
+          >
+            {users.map((user) => (
+              <option
+                key={user.id}
+                value={user.id}
+              >
+                {user.name}
+              </option>
+            ))}
+          </select> */}
+        </>
       )}
     </div>
   );

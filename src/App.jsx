@@ -24,46 +24,50 @@ function App() {
     };
 
   return (
-    <>
+    <div
+      id='appContainer'
+    >
       <Router>
-        <DndProvider backend={HTML5Backend}>
-          <Header
-            user={user}
-            setUser={setUser}
-          />
-          <Routes>
-            <Route
-              index
-              element={
-                <Board
-                  setModalShow={setModalShow}
-                  modalShow={modalShow}
-                  selectedTask={selectedTask}
-                  handleTaskClick={handleTaskClick}
-                  user={user}
-                />
-              }
+        <DndProvider
+          backend={HTML5Backend}
+        >
+            <Header
+              user={user}
+              setUser={setUser}
             />
-            <Route
-              path='/list'
-              element={
-                <List
-                  setModalShow={setModalShow}
-                  modalShow={modalShow}
-                  selectedTask={selectedTask}
-                  handleTaskClick={handleTaskClick}
-                />
-              }
-            />
-            <Route
-              path='*'
-              element={<MissingPage />}
-            />
-          </Routes>
-          <Footer />
+            <Routes>
+              <Route
+                index
+                element={
+                  <Board
+                    setModalShow={setModalShow}
+                    modalShow={modalShow}
+                    selectedTask={selectedTask}
+                    handleTaskClick={handleTaskClick}
+                    user={user}
+                  />
+                }
+              />
+              <Route
+                path='/list'
+                element={
+                  <List
+                    setModalShow={setModalShow}
+                    modalShow={modalShow}
+                    selectedTask={selectedTask}
+                    handleTaskClick={handleTaskClick}
+                  />
+                }
+              />
+              <Route
+                path='*'
+                element={<MissingPage />}
+              />
+            </Routes>
+            <Footer />
         </DndProvider>
       </Router>
-    </>
+    </div>
   );
 }
 

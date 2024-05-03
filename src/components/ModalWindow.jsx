@@ -2,7 +2,8 @@ import { useDispatch } from 'react-redux';
 import { useState, useEffect } from 'react';
 // Components
 import Modal from 'react-bootstrap/Modal';
-// import AssignedUsers from './AssignedUsers';
+import AssignedUsers from './AssignedUsers';
+
 // Slices
 import { removeTask, editTask } from '../features/task/taskSlice';
 
@@ -39,6 +40,7 @@ function ModalWindow(props) {
     props.onHide();
   };
 
+  
   return (
     <Modal
       {...props}
@@ -93,7 +95,9 @@ function ModalWindow(props) {
             style={{ width: '100%' }}
           ></textarea>
         </div>
-        <div>{/* <AssignedUsers /> */}</div>
+        <div>
+          <AssignedUsers task={props.task} show={props.show} />
+        </div>
       </Modal.Body>
       <Modal.Footer>
         <div className='row mx-auto'>

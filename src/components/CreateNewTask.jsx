@@ -57,7 +57,7 @@ const CreateNewTask = () => {
         onClick={handleClick}
         className='btn btn-aurora-primary rounded-pill'
       >
-        CREATE NEW TASK
+        Create New Task
       </Button>
 
       <Overlay
