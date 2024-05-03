@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import DataContext from '../context/DataContext';
 // Components
 import Modal from 'react-bootstrap/Modal';
 import AssignedUsers from './AssignedUsers';
@@ -12,6 +13,7 @@ function ModalWindow(props) {
   const [descriptionInput, setDescriptionInput] = useState('');
   const [doDateInput, setDoDateInput] = useState('');
   const [deadlineInput, setDeadLineInput] = useState('');
+  const { userId } = useContext(DataContext);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +31,7 @@ function ModalWindow(props) {
   const editTaskHandler = () => {
     const editedTask = {
       taskId: props.task.id,
-      assignedTo: props.task.assignedTo,
+      assignedTo: [...props.task.assignedTo, userId],
       newTitle: titleInput,
       newDescription: descriptionInput,
       newDeadline: deadlineInput,
@@ -40,7 +42,6 @@ function ModalWindow(props) {
     props.onHide();
   };
 
-  
   return (
     <Modal
       {...props}
@@ -96,7 +97,10 @@ function ModalWindow(props) {
           ></textarea>
         </div>
         <div>
-          <AssignedUsers task={props.task} show={props.show} />
+          <AssignedUsers
+            task={props.task}
+            show={props.show}
+          />
         </div>
       </Modal.Body>
       <Modal.Footer>
