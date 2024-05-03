@@ -1,3 +1,4 @@
+//Komponent för listvyn
 import { useSelector } from "react-redux";
 import ModalWindow from "./ModalWindow";
 import { columnSlice } from '../features/column/columnSlice';

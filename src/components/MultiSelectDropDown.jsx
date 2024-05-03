@@ -1,10 +1,9 @@
+//Komponent för dropdownen för att ändra assigned users i modalen
 import { Dropdown } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { editTask } from '../features/task/taskSlice';
 import { useContext } from 'react';
 import DataContext from '../context/DataContext';
-
-// när jag klickar på en person. ska personens id läggas till i arrayen som heter assignedTo i den aktuella tasken.
 
 //Om personen redan finns där ska personen tas bort.
 
@@ -13,7 +12,6 @@ const MultiSelectDropDown = ({
   users,
   selected_users,
   set_Selected_users,
-  handleAssignedUsers,
 }) => {
   const { setUserId } = useContext(DataContext);
 

@@ -1,3 +1,4 @@
+//Detta är knappen som lägger till kolumner
 import { BsFillPlusSquareFill } from 'react-icons/bs';
 import { useDispatch } from 'react-redux';
 import { addColumn } from '../features/column/columnSlice';

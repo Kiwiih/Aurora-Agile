@@ -1,6 +1,8 @@
+//Komponent för modalen, som hanterar ändringar i tasken
 import { useDispatch } from 'react-redux';
 import { useState, useEffect, useContext } from 'react';
 import DataContext from '../context/DataContext';
+
 // Components
 import Modal from 'react-bootstrap/Modal';
 import AssignedUsers from './AssignedUsers';

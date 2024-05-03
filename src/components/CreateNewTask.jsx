@@ -1,6 +1,8 @@
+//Komponenten för att skapa ny task
 import { useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { addTask } from '../features/task/taskSlice';
+
 //Bootstrap
 import Button from 'react-bootstrap/Button';
 import Overlay from 'react-bootstrap/Overlay';
@@ -19,8 +21,6 @@ const CreateNewTask = () => {
   const ref = useRef(null);
 
   const dispatch = useDispatch();
-  // const tasks = useSelector((state) => state[taskSlice.name].tasks);
-  // console.log(tasks);
 
   const handleClick = (event) => {
     if (event) {
