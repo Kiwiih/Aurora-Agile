@@ -27,7 +27,7 @@ const Board = ({modalShow, setModalShow, selectedTask, handleTaskClick, user}) =
                 handleTaskClick={handleTaskClick}
               />
             ))}
-            <div className='createNewColumn_section my-3 mx-1'>
+            <div className='createNewColumn_section'>
               <AddColumn />
             </div>
           </div>
