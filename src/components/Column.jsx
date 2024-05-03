@@ -1,14 +1,18 @@
-import { useEffect, useState } from 'react';
+//Här är kolumnkomponenten
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// Slices
 
+// Slices
 import { moveTask } from '../features/task/taskSlice';
 import { removeColumn, editColumn } from '../features/column/columnSlice';
+
 //Components
 import Task from './Task';
 import DeleteColumn from './DeleteColumn';
+
 //  React-dnd
 import { useDrop } from 'react-dnd';
+
 //Bootstrap
 import Alert from 'react-bootstrap/Alert';
 
@@ -54,7 +58,6 @@ const column = ({ currentColumn, columnId, user, handleTaskClick }) => {
     const editedColumn = {
       currentColumn: currentColumn,
       newTitle: columnTitle,
-      // newColor: color, //! If we want to change color
     };
     dispatch(editColumn(editedColumn));
   };

@@ -1,7 +1,7 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { useState, useEffect } from 'react';
+//Denna komponent visar vilka users som är valda till tasken
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 import MultiSelectDropDown from './MultiSelectDropDown';
-import { editTask } from '../features/task/taskSlice';
 
 // Bootstrap:
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
@@ -13,14 +13,8 @@ const AssignedUsers = ({ task, show }) => {
 
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const dispatch = useDispatch();
-
   const handleAddUser = (e) => {
     e.stopPropagation();
-
-    /* dropdown öppnas nu vid klick på plus. users arrayen visas nu som options.
-    fixa så att vid klick väljs denna person som assigned till tasket. 
-    koden nedan med if (task) kommer ej användas som den ser ut nu.  */
     setShowDropdown(!showDropdown);
   };
 
@@ -32,15 +26,12 @@ const AssignedUsers = ({ task, show }) => {
       {task.assignedTo.map(
         (person, index) =>
           index < 3 && (
-            // this div is a container for everyting that it meant to be a circle.
             <div key={index}>
-              {/* Bootstrap tooltip for the circle: */}
               <OverlayTrigger
                 overlay={
                   <Tooltip> {users.find((u) => u.id === person).name}</Tooltip>
                 }
               >
-                {/* circle */}
                 <div
                   className={`me-1 rounded-circle text-bg-aurora-secondary opacity-${100 - index * 25} circle`}
                 >
@@ -93,20 +84,6 @@ const AssignedUsers = ({ task, show }) => {
             selected_users={selected_users}
             set_Selected_users={set_Selected_users}
           />
-          {/* <select
-            name='users'
-            id='users'
-            onClick={(e) => e.stopPropagation()}
-          >
-            {users.map((user) => (
-              <option
-                key={user.id}
-                value={user.id}
-              >
-                {user.name}
-              </option>
-            ))}
-          </select> */}
         </>
       )}
     </div>

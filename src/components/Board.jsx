@@ -1,4 +1,4 @@
-import { useState } from 'react';
+//Komponenten som håller allt
 import { useSelector } from 'react-redux';
 import { columnSlice } from '../features/column/columnSlice';
 //Components
@@ -10,7 +10,7 @@ import AddColumn from './AddColumn';
 const Board = ({modalShow, setModalShow, selectedTask, handleTaskClick, user}) => {
 
   const columns = useSelector((state) => state[columnSlice.name].columns);
-  // console.log(columns);
+
   return (
     <>
         <main>

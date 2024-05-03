@@ -5,7 +5,6 @@ const initialState = {
     {
       id: 1,
       title: 'Todo',
-      // workspaces: [{}], //* Olika vyer
     },
     {
       id: 2,
@@ -30,7 +29,6 @@ export const columnSlice = createSlice({
     },
     removeColumn: (state, action) => {
       const columnToRemove = action.payload;
-      // console.log('Remove', columnToRemove);
       state.columns = state.columns.filter(
         (col) => col.id !== columnToRemove.id
       );

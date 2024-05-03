@@ -1,8 +1,8 @@
+//Komponenten för tasken
+import AssignedUsers from './AssignedUsers';
+
 //  React-dnd
 import { useDrag } from 'react-dnd';
-
-import React from 'react';
-import AssignedUsers from './AssignedUsers';
 
 const Task = ({ task, onTaskClick }) => {
   // DRAG - React-dnd
@@ -23,14 +23,6 @@ const Task = ({ task, onTaskClick }) => {
     >
       <div className='d-flex justify-content-between'>
         <h3 className='h6 text-truncate'>{task.title}</h3>
-
-        {/* <p
-          style={{ fontSize: '80%' }}
-          className='m-0 flex-shrink-0'
-        >
-          Do Date: <br />
-          {doDate}
-        </p> */}
       </div>
 
       <div className='d-flex justify-content-between'>

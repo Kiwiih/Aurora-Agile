@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+//Komponent för att ta bort kolumn
 import { BsTrash } from 'react-icons/bs';
 
 const DeleteColumn = ({ onClick }) => {
