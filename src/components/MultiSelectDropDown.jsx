@@ -25,23 +25,11 @@ const MultiSelectDropDown = ({
   }, []);
 
   useEffect(() => {
-    // Filtera användarobjekten som har samma id som numren i task.assignedTo
-
-    // console.log(
-    //   'useEffect()',
-    //   'selected_users ',
-    //   selected_users,
-    //   '|',
-    //   'selectedUsersId ',
-    //   selectedUsersId
-    // );
     editAssignedToHandler();
   }, [selectedUsersId, selected_users]);
 
   const editAssignedToHandler = () => {
-    // setSelectedUsersId(usersId);
-
-    console.log('editAssignedToHandler()', selectedUsersId);
+    // console.log('editAssignedToHandler()', selectedUsersId);
 
     const editedTask = {
       ...task,
@@ -70,8 +58,7 @@ const MultiSelectDropDown = ({
     } else {
       setSelectedUsersId([...selectedUsersId, userId]);
     }
-
-    console.log('handleSetSelectedUsersId()', selectedUsersId);
+    // console.log('handleSetSelectedUsersId()', selectedUsersId);
   };
 
   return (

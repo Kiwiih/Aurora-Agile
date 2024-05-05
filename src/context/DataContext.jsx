@@ -5,7 +5,18 @@ import { createContext, useState } from 'react';
 const DataContext = createContext();
 
 export const DataProvider = ({ children }) => {
-  return <DataContext.Provider value={{}}>{children}</DataContext.Provider>;
+  const [assignedToSave, setAssignedToSave] = useState([]);
+
+  return (
+    <DataContext.Provider
+      value={{
+        assignedToSave,
+        setAssignedToSave,
+      }}
+    >
+      {children}
+    </DataContext.Provider>
+  );
 };
 
 export default DataContext;
