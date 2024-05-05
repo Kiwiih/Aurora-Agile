@@ -33,7 +33,8 @@ function ModalWindow(props) {
   const editTaskHandler = () => {
     const editedTask = {
       taskId: props.task.id,
-      assignedTo: [...props.task.assignedTo, userId],
+      // assignedTo: [...props.task.assignedTo, userId],
+      assignedTo: props.task.assignedTo,
       newTitle: titleInput,
       newDescription: descriptionInput,
       newDeadline: deadlineInput,

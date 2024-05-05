@@ -1,20 +1,31 @@
 //Denna komponent visar vilka users som är valda till tasken
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import MultiSelectDropDown from './MultiSelectDropDown';
 
 // Bootstrap:
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
+import { Modal } from 'react-bootstrap';
 
 const AssignedUsers = ({ task, show }) => {
   const users = useSelector((state) => state.user.users);
   const [selected_users, set_Selected_users] = useState([]);
-
+  const [selectedUsersId, setSelectedUsersId] = useState(task.assignedTo);
   const [showDropdown, setShowDropdown] = useState(false);
 
+  useEffect(() => {
+    // rerender ModalWindow
+    if (show === true && selectedUsersId !== null) {
+      setShowDropdown(true);
+    } else if (!show) {
+      setShowDropdown(false);
+    }
+  }, []);
+
   const handleAddUser = (e) => {
-    e.stopPropagation();
+    console.log('handleAddUser()', 'selectedUsersId: ', selectedUsersId);
+    // e.stopPropagation();
     setShowDropdown(!showDropdown);
   };
 
@@ -72,19 +83,15 @@ const AssignedUsers = ({ task, show }) => {
           className='rounded-circle circle bg-transparent fs-3'
           onClick={handleAddUser}
         >
-          +
-        </div>
-      )}
-
-      {showDropdown && (
-        <>
           <MultiSelectDropDown
             task={task}
             users={users}
             selected_users={selected_users}
             set_Selected_users={set_Selected_users}
+            selectedUsersId={selectedUsersId}
+            setSelectedUsersId={setSelectedUsersId}
           />
-        </>
+        </div>
       )}
     </div>
   );
