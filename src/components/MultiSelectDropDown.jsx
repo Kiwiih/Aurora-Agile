@@ -15,9 +15,8 @@ const MultiSelectDropDown = ({
   selectedUsersId,
   setSelectedUsersId,
 }) => {
-  const { setUserId } = useContext(DataContext);
-
   const dispatch = useDispatch();
+
   useEffect(() => {
     set_Selected_users(
       users.filter((user) => task.assignedTo.includes(user.id))
@@ -29,8 +28,6 @@ const MultiSelectDropDown = ({
   }, [selectedUsersId, selected_users]);
 
   const editAssignedToHandler = () => {
-    // console.log('editAssignedToHandler()', selectedUsersId);
-
     const editedTask = {
       ...task,
       taskId: task.id,
@@ -58,7 +55,6 @@ const MultiSelectDropDown = ({
     } else {
       setSelectedUsersId([...selectedUsersId, userId]);
     }
-    // console.log('handleSetSelectedUsersId()', selectedUsersId);
   };
 
   return (
