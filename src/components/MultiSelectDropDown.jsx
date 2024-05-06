@@ -2,8 +2,7 @@
 import { Dropdown } from 'react-bootstrap';
 import { useDispatch } from 'react-redux';
 import { editTask } from '../features/task/taskSlice';
-import { useContext, useEffect } from 'react';
-import DataContext from '../context/DataContext';
+import { useEffect } from 'react';
 
 //Om personen redan finns där ska personen tas bort.
 
@@ -14,6 +13,7 @@ const MultiSelectDropDown = ({
   set_Selected_users,
   selectedUsersId,
   setSelectedUsersId,
+  onSelectedUsersChange,
 }) => {
   const dispatch = useDispatch();
 
@@ -25,6 +25,7 @@ const MultiSelectDropDown = ({
 
   useEffect(() => {
     editAssignedToHandler();
+    onSelectedUsersChange(selectedUsersId);
   }, [selectedUsersId, selected_users]);
 
   const editAssignedToHandler = () => {
