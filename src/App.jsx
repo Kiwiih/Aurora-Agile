@@ -20,7 +20,6 @@ function App() {
 
   // Function To Choose The Selected Task
   const handleTaskClick = (task) => {
-    console.log('Klickat på task: ', task);
     setModalShow(true);
     setSelectedTask(task);
   };

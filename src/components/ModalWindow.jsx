@@ -15,7 +15,8 @@ function ModalWindow(props) {
   const [descriptionInput, setDescriptionInput] = useState('');
   const [doDateInput, setDoDateInput] = useState('');
   const [deadlineInput, setDeadLineInput] = useState('');
-  const { userId } = useContext(DataContext);
+  const { assignedToSave } = useContext(DataContext);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -33,7 +34,7 @@ function ModalWindow(props) {
   const editTaskHandler = () => {
     const editedTask = {
       taskId: props.task.id,
-      assignedTo: [...props.task.assignedTo, userId],
+      assignedTo: assignedToSave,
       newTitle: titleInput,
       newDescription: descriptionInput,
       newDeadline: deadlineInput,
