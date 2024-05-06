@@ -1,12 +1,15 @@
 //Komponent för listvyn
-import { useSelector } from "react-redux";
-import ModalWindow from "./ModalWindow";
+import { useSelector } from 'react-redux';
+import ModalWindow from './ModalWindow';
 import { columnSlice } from '../features/column/columnSlice';
+import { useContext } from 'react';
 
-const List = ({ modalShow, setModalShow, selectedTask, handleTaskClick}) => {
+import DataContext from '../context/DataContext';
+
+const List = ({ modalShow, setModalShow, selectedTask, handleTaskClick }) => {
   const tasks = useSelector((state) => state.task.tasks);
-
   const columns = useSelector((state) => state[columnSlice.name].columns);
+  const { assignedToSave, setAssignedToSave } = useContext(DataContext);
 
   return (
     <main className='listContainer'>
@@ -47,4 +50,4 @@ const List = ({ modalShow, setModalShow, selectedTask, handleTaskClick}) => {
   );
 };
 
-export default List
+export default List;

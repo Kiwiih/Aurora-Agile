@@ -6,7 +6,6 @@ import MultiSelectDropDown from './MultiSelectDropDown';
 // Bootstrap:
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { Modal } from 'react-bootstrap';
 
 import DataContext from '../context/DataContext';
 
@@ -15,12 +14,18 @@ const AssignedUsers = ({ task, show }) => {
   const [selected_users, set_Selected_users] = useState([]);
   const [selectedUsersId, setSelectedUsersId] = useState([]);
 
-  const { assignedToSave, setAssignedToSave } = useContext(DataContext);
+  const { setAssignedToSave } = useContext(DataContext);
 
   useEffect(() => {
     setSelectedUsersId(task.assignedTo);
     setAssignedToSave(task.assignedTo);
   }, [task]);
+
+  // Funktion för att uppdatera assignedToSave när användaren gör ändringar
+  const handleSelectedUsersChange = (selectedUsersId) => {
+    setSelectedUsersId(selectedUsersId);
+    setAssignedToSave(selectedUsersId);
+  };
 
   return (
     <div className='assigned'>
@@ -79,6 +84,7 @@ const AssignedUsers = ({ task, show }) => {
           set_Selected_users={set_Selected_users}
           selectedUsersId={selectedUsersId}
           setSelectedUsersId={setSelectedUsersId}
+          onSelectedUsersChange={handleSelectedUsersChange}
         />
       )}
     </div>
